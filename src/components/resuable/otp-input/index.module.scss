@@ -1,0 +1,31 @@
+@import "../../styles/_mixins.scss";
+
+@import "../../styles/_sizes.scss";
+
+.otpContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.otpInput {
+  width: 54px !important;
+  height: 61px;
+  color: var(--risk-primary);
+  line-height: 22px;
+  border: 1px solid var(--risk-primary);
+  border-radius: $border-radius-md;
+  outline: none;
+  margin: 10px;
+  background-color: transparent;
+  transition: border 0.3s;
+  @include font(1.4em, 400);
+
+  &:focus {
+    border-radius: $border-radius-sm;
+    border: 2px solid var(--risk-primary);
+  }
+}
+
+.error {
+  color: var(--risk-danger);
+}
