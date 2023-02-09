@@ -1,0 +1,36 @@
+@import "../../../../styles/_mixins.scss";
+
+.label {
+  @include font(0.85em, 600);
+  color: rgba(24, 24, 24, 1);
+}
+
+.field {
+  @include font(0.9em, 600);
+  border: 1px solid rgba(241, 243, 242, 1);
+  width: 100%;
+  background-color: var(--white);
+
+  &:focus {
+    outline: 0;
+    border: 1px solid rgba(0, 153, 34, 1);
+  }
+}
+
+.button {
+  outline: 0;
+  border: 0;
+  background-color: rgba(24, 24, 24, 0.1);
+  color: rgba(24, 24, 24, 0.3);
+  @include font(0.85em, 600);
+  border-radius: 20px;
+
+  &.picked {
+    background-color: rgba(59, 191, 88, 1);
+    color: var(--white);
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
