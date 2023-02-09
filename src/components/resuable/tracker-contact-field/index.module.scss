@@ -1,0 +1,72 @@
+@import "../../../../styles/_mixins.scss";
+
+.label {
+  color: rgba(24, 24, 24, 1);
+  @include font(0.85em, 600);
+}
+
+.field {
+  //padding: 6px;
+  border: 1px solid rgba(241, 243, 242, 1);
+  width: 100%;
+  background-color: var(--white);
+  @include font(0.9em, 600);
+
+  &:focus {
+    outline: 0;
+    border: 1px solid rgba(0, 153, 34, 1);
+  }
+}
+
+.formWrapper {
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include scrollbars(2px);
+}
+
+.formButton {
+  white-space: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  border: 0;
+  outline: 0;
+  background-color: var(--white);
+  transition: 0.2s;
+  @include scrollbars(0px);
+  //text-overflow: ellipsis;
+  @include font(0.9em, 600);
+
+  &.boxHeight {
+    height: 29px;
+  }
+}
+
+.buttonStyle {
+  width: 40%;
+  border-radius: 2px;
+  outline: 0;
+  @include font(0.8em, 600);
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &.buttonBorder {
+    color: rgba(0, 153, 34, 1);
+    border: 1px solid rgba(0, 153, 34, 1);
+    background-color: var(white);
+  }
+
+  &.buttonGreen {
+    border: 0;
+    color: var(--white);
+    background-color: rgba(0, 153, 34, 1);
+  }
+}
+
+.displayValue {
+  padding: 5px 7px;
+  background-color: #e6e6e6;
+  border-radius: 20px;
+}
