@@ -1,0 +1,36 @@
+@import "../../../styles/_fonts.scss";
+
+.pagination {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  list-style: none;
+  transition: 0.3s;
+
+  > li {
+    text-decoration: none;
+    padding: 3px 7px;
+    margin: 0 3px;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+    cursor: pointer;
+    color: rgba(24, 24, 24, 1);
+    //@include font(0.9em, 500);
+  }
+
+  .active {
+    color: #000000;
+    font-weight: bolder;
+    border-radius: 5px;
+    color: var(--white);
+    background-color: rgba(0, 153, 34, 1);
+    //@include font(0.9em, 600);
+  }
+
+  .disabled {
+    opacity: 0.3;
+  }
+}
