@@ -1,0 +1,13 @@
+.wrapper {
+  background-color: rgba(161, 170, 166, 0.1);
+
+  &.opacity {
+    opacity: 0.2;
+  }
+}
+
+.fade {
+  z-index: 2;
+  height: 100%;
+  cursor: not-allowed;
+}
