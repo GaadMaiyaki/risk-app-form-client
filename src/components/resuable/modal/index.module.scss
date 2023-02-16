@@ -1,0 +1,33 @@
+@import "../../../../styles/_mixins.scss";
+
+.wrapper {
+  z-index: 10;
+  top: 0;
+  height: 100vh;
+  scrollbar-gutter: stable;
+
+  &.includeBg {
+    background-color: rgba(24, 24, 24, 0.7);
+  }
+
+  .icon {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .title {
+    color: rgba(24, 24, 24, 0.5);
+    text-transform: capitalize;
+    @include font(1em, 600);
+  }
+
+  .container {
+    background-color: var(--white);
+  }
+
+  .header {
+    background-color: rgba(241, 243, 242, 1);
+  }
+}
