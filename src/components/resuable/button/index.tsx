@@ -7,30 +7,38 @@ import { parseClassName } from "../../../utils";
 interface IButton {
   title: string;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   classes?: string;
   type: "button" | "submit" | "reset" | undefined;
   color: "primary" | "secondary";
   size: "md" | "sm" | "lg";
   disabled?: boolean;
+  renderComponent?(): React.ReactNode;
 }
 
-const Button = ({ label, classes, color, size, ...props }: IButton) => {
+const Button = ({
+  label,
+  classes,
+  color,
+  size,
+  renderComponent,
+  ...props
+}: IButton) => {
   return (
     <button
       {...props}
       aria-label={label}
       className={parseClassName([
+        classes ? classes : "",
         styles.btn,
         styles[color],
         styles[size],
-        classes ? classes: "",
       ])}
     >
       {label}
+      {renderComponent && renderComponent()}
     </button>
   );
 };
-
 
 export default Button;
