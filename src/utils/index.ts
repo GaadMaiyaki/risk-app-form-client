@@ -21,7 +21,9 @@ export const structuredValidationSchema = (data: Array<any>) => {};
 
 export const structuredInitialValues = (data: Array<any>) => {};
 
-export const structredFormGroup = (fields: Array<{ [key: string]: any }>) => {
+export const structredFormGroup = (
+  fields: Array<{ [key: string]: any }>
+): { [key: string]: Record<string, any[]> }[] => {
   return (fields || []).reduce((acc: any, current) => {
     const { section, group } = current;
 
