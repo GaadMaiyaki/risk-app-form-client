@@ -150,7 +150,6 @@ reportWebVitals();
 
 //export default FormPage;
 
-
 //{
 //  formSections.map((section) => (
 //    <button
@@ -192,3 +191,15 @@ reportWebVitals();
 //    </button>
 //  ));
 //}
+
+//const [s, setS] = React.useState<any>({});
+
+//console.log(s, section, "this is s man");
+
+//const criteria = ({ isValid, dirty }: any) => {
+//  if (!isValid) {
+//    return true;
+//  }
+
+//  return false;
+//};
