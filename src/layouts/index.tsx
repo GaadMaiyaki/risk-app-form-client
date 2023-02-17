@@ -8,7 +8,9 @@ import Header from "../components/header";
 const HeaderFooterLayout = () => {
   return (
     <section className="container">
-      <Header />
+      <header>
+        <Header />
+      </header>
 
       <main>
         <Outlet />
