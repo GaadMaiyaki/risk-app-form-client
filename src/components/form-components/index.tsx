@@ -17,19 +17,10 @@ const FormComponents = React.forwardRef(
 
     return (
       <div className="col-12 my-5">
-        <input
-          className="w-100"
-          name={field.name}
-          type={field.type}
-          value={formik.values[field.name]}
-          onBlur={formik.handleBlur}
-          ref={ref}
-          onChange={formik.handleChange}
-        />
+       <div>form field</div>
+        {/*<E formik={formik} field={field} />*/}
 
-        <E formik={formik} field={field} />
-
-        {/*{formik.touched[field.name] && <div>{formik.errors?.[field.name]|| " pdd"}</div>}*/}
+        {/*{<ErrorMessage name={field.name} />}*/}
       </div>
     );
   }
