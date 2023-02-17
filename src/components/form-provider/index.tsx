@@ -116,7 +116,7 @@ const FormProvider = ({ data }: IFormProvider) => {
                     title="Submit Form"
                     color="primary"
                     size="lg"
-                    label="Next"
+                    label="Submit"
                     classes="w-100 mb-3"
                   />
                 )}
