@@ -1,0 +1,54 @@
+.wrapper {
+  width: 100%;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+
+  .p {
+    z-index: 1;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: red;
+  }
+
+  .show {
+    z-index: 1;
+    content: "";
+    //width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background: gray;
+  }
+
+  > div {
+    z-index: 2;
+
+    //&.shows {
+    //  &::after {
+    //    z-index: 1;
+    //    content: "";
+    //    width: 25px;
+    //    height: 10px;
+    //    position: absolute;
+    //    top: 50%;
+    //    left: 300;
+    //    background: red;
+    //  }
+    //}
+  }
+
+  //  &::after {
+  //    z-index: 1;
+  //    content: "";
+  //    width: 100%;
+  //    height: 1px;
+  //    position: absolute;
+  //    top: 15px;
+  //    left: 0;
+  //    background: gray;
+  //  }
+}
