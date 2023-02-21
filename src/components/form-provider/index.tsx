@@ -12,11 +12,10 @@ import FormProccessor from "../form-processor";
 
 import { extractDataValue, validatorProcessor } from "../../utils";
 
-import {useRefs} from "./../../hooks/useRefs";
-
+import { useRefs } from "./../../hooks/useRefs";
 import Button from "../resuable/button";
-
 import { flatData } from "./../../utils/index";
+import Tabs from "../resuable/tabs";
 
 interface IFormProvider {
   data: Array<any>;
@@ -25,6 +24,7 @@ interface IFormProvider {
 const FormProvider = ({ data }: IFormProvider) => {
   const [
     {
+      groupedFields,
       currentSection,
       formSections,
       section,
@@ -54,78 +54,82 @@ const FormProvider = ({ data }: IFormProvider) => {
   };
 
   return (
-    <Formik
-      initialValues={extractDataValue(data)}
-      validationSchema={validatorProcessor(Yup, currentSection)}
-      validateOnMount
-      onSubmit={(v, f: any) => {
-        console.log(v, "this is value", f, "this is error");
-      }}
-    >
-      {(formik: FormikProps<any>) => {
-        return (
-          <>
-            {console.log(formik.isValid, formik, formik.isSubmitting)}
-            <Form>
-              <FormProccessor
-                fields={currentSection}
-                formik={formik}
-                refs={refs}
-              />
-
-              <aside className="my-5 text-center">
-                <Button
-                  onClick={() => {
-                    //formik.isValid&&
-                    handleSectionChange("previous");
-
-                    //!formik.isValid && handleErr(formik.errors);
-                  }}
-                  type="submit"
-                  title=""
-                  color="primary"
-                  size="lg"
-                  label="Previous"
-                  disabled={!shouldPrevious}
-                  classes="bg-none"
-                  renderComponent={() => null}
+    <Tabs data={groupedFields} section={section}>
+      <Formik
+        initialValues={extractDataValue(data)}
+        validationSchema={validatorProcessor(Yup, currentSection)}
+        validateOnMount
+        onSubmit={(v, f: any) => {
+          console.log(v, "this is value", f, "this is error");
+        }}
+      >
+        {(formik: FormikProps<any>) => {
+          return (
+            <>
+              {console.log(formik.isValid, formik, formik.isSubmitting)}
+              <Form>
+                <FormProccessor
+                  fields={currentSection}
+                  formik={formik}
+                  refs={refs}
                 />
 
-                <Button
-                  onClick={() => {
-                    //!formik.isValid && handleErr(formik.errors);
-
-                    //formik.isValid&&
-                    handleSectionChange("next");
-                  }}
-                  type="submit"
-                  title=""
-                  color="primary"
-                  size="lg"
-                  label="Next"
-                  disabled={!shouldNext}
-                  classes="mx-2 bg-none"
-                  renderComponent={() => null}
-                />
-              </aside>
-
-              <aside className="text-center">
-                {section === formSections.length && (
+                <aside className="my-5 text-center">
                   <Button
+                    onClick={() => {
+                      formik.isValid && handleSectionChange("previous");
+
+                      !formik.isValid && handleErr(formik.errors);
+                    }}
                     type="submit"
-                    title="Submit Form"
+                    title=""
                     color="primary"
                     size="lg"
-                    label="Submit"
-                    classes="w-100 mb-3"
+                    label="Previous"
+                    disabled={!shouldPrevious}
+                    classes="bg-none"
+                    renderComponent={() => (
+                      <span>{shouldPrevious && getPreviousSectionName()}</span>
+                    )}
                   />
-                )}
-              </aside>
-            </Form>
-          </>
-        );
-      }}
-    </Formik>
+
+                  <Button
+                    onClick={() => {
+                      !formik.isValid && handleErr(formik.errors);
+
+                      formik.isValid && handleSectionChange("next");
+                    }}
+                    type="submit"
+                    title=""
+                    color="primary"
+                    size="lg"
+                    label="Next"
+                    disabled={!shouldNext}
+                    classes="mx-2 bg-none"
+                    renderComponent={() => (
+                      <span>{shouldNext && getNextSectionName()}</span>
+                    )}
+                  />
+                </aside>
+
+                <aside className="text-center">
+                  {section === formSections.length && (
+                    <Button
+                      type="submit"
+                      title="Submit Form"
+                      color="primary"
+                      size="lg"
+                      label="Next"
+                      classes="w-100 mb-3"
+                    />
+                  )}
+                </aside>
+              </Form>
+            </>
+          );
+        }}
+      </Formik>
+    </Tabs>
   );
 };
 
