@@ -19,9 +19,9 @@ interface IFormProcessor {
 const FormProccessor = ({ fields, formik, refs }: IFormProcessor) => {
   return (
     <section className="my-5 py-5">
-      <div className="bg-dark text-white p-2 mb-3 my-5 py-5">
+      {/*<div className="bg-dark text-white p-2 mb-3 my-5 py-5">
         {flatData(fields)?.[0]?.section_name}
-      </div>
+      </div>*/}
 
       <div className="container-fluid">
         {Array.from({ length: fields.length }).map((_, i: number) => {
@@ -53,7 +53,7 @@ const FormProccessor = ({ fields, formik, refs }: IFormProcessor) => {
                   ) : null;
                 }
                 if (!!field.display_deps) {
-                  return displayController(field.display_deps, formik.values)
+                  return !displayController(field.display_deps, formik.values)
                     .display_dep ? (
                     <FormComponents
                       field={field}
