@@ -3,7 +3,7 @@ import React from "react";
 import PopformField from "../pop-form";
 import ButtonField from "../button-field";
 import SelectField from "../select-field";
-import TextField from "../text-field";
+import TextField from "../input-field";
 import TextAreaField from "../textarea-field";
 
 const pickField = (fieldType: string, item: { [key: string]: any }) => {
@@ -14,7 +14,7 @@ const pickField = (fieldType: string, item: { [key: string]: any }) => {
     case "phone":
     case "tel":
     case "email": {
-      return <TextField {...item} />;
+      return null;
     }
     case "select": {
       return <SelectField {...item} />;
@@ -33,13 +33,7 @@ const pickField = (fieldType: string, item: { [key: string]: any }) => {
   }
 };
 
-const FormRenderer= ({
-  data,
-  formik,
-}: {
-  data: Array<any>;
-  formik: any;
-}) => {
+const FormRenderer = ({ data, formik }: { data: Array<any>; formik: any }) => {
   return (
     <>
       {data.length > 0 && (
