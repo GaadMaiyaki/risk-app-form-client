@@ -1,0 +1,7 @@
+@import "../../../styles/_mixins.scss";
+
+.wrapper {
+  > label {
+    @include font(1em, 500);
+  }
+}
