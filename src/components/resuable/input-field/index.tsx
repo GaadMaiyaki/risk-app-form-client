@@ -1,39 +1,57 @@
 import React from "react";
 
-import { Field, FormikProps } from "formik";
+import { FormikProps } from "formik";
 
 import styles from "./index.module.scss";
+
+import LabelWrapper from "../label-wrapper";
+import FieldWrapper from "../field-wrapper";
+import Tooltip from "../tool-tip";
+import Label from "../label";
+
+import { parseClassName } from "./../../../utils";
 
 interface IInputField {
   formik: FormikProps<any>;
   field: { [key: string]: any };
-  //ref: React.MutableRefObject<any>;
 }
 
 const InputField = React.forwardRef(
-  ({ formik, field: { label, name, type } }: IInputField, ref: any) => {
-    return (
-      <section className="container-fluid">
-        <div className="row">
-          <div
-            className={`col-3 d-flex align-items-center justify-content-end mr-0 px-0`}
-          >
-            <div className={`${styles.label} text-right`}>{label}</div>
-          </div>
+  (
+    { formik, field: { label, name, type, validation, tooltip } }: IInputField,
+    ref: any
+  ) => {
+    const isError: boolean = !!formik.errors[name] && !!formik.touched[name];
 
-          <div className="col-9 pl-2">
-            <input
-              className="w-100"
-              name={name}
-              type={type}
-              value={formik.values[name]}
-              onBlur={formik.handleBlur}
-              ref={ref}
-              onChange={formik.handleChange}
-            />
-          </div>
-        </div>
-      </section>
+    return (
+      <>
+        <LabelWrapper>
+          <Label name={name} label={label} validation={validation} />
+        </LabelWrapper>
+
+        <FieldWrapper>
+          <input
+            className={parseClassName([
+              "w-100",
+              styles.field,
+              isError ? styles.error : "",
+            ])}
+            name={name}
+            type={type}
+            id={name}
+            value={formik.values[name]}
+            onBlur={formik.handleBlur}
+            ref={ref}
+            onChange={formik.handleChange}
+            arial-label={label}
+            arial-describeby={`${name}-error`}
+            autoComplete="false"
+            autoCorrect="false"
+          />
+
+          {!!tooltip && <Tooltip content={tooltip} id={name} />}
+        </FieldWrapper>
+      </>
     );
   }
 );
