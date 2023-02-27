@@ -10,3 +10,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
 }
+
+input,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--white) inset !important;
+}
+
+.error-message {
+  color: var(--risk-danger);
+  @include font(0.8em, 300);
+}
