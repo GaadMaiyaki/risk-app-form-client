@@ -323,7 +323,7 @@ export const fields = [
         validation: { type: "text", message: null },
         formatting: null,
       },
-      {zzz
+      {
         name: "lender_cc_email",
         placeholder: "Email",
         label: "lender cc email",
