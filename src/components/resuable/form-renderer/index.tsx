@@ -17,10 +17,10 @@ const pickField = (fieldType: string, item: { [key: string]: any }) => {
       return null;
     }
     case "select": {
-      return <SelectField {...item} />;
+      return null;
     }
     case "buttons": {
-      return <ButtonField {...item} />;
+      return null;
     }
     case "waiver": {
       return <TextAreaField {...item} />;
