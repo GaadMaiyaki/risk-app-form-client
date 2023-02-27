@@ -1,43 +1,44 @@
 import React from "react";
 
 import { ErrorMessage, FormikProps } from "formik";
-import InputField from "../resuable/input-field";
+
+import FieldWrapper from "../resuable/field-wrapper";
+import LabelWrapper from "../resuable/label-wrapper";
+
+import fieldComponentPicker from "../../utils/component-picker";
 
 interface IFormComponents {
   field: { [key: string]: any };
   formik: FormikProps<any>;
+  refs: { [key: string]: React.MutableRefObject<any> };
 }
 
-//const E = ({ formik, field }: { formik: any; field: any }) => {
-//  return <div>{formik.errors[field.name]}</div>;
-//};
+const FormComponents = ({ field, formik, refs }: IFormComponents) => {
+  return (
+    <div className="col-12 mb-2">
+      <aside className="row align-items-center justify-content-center">
+        {fieldComponentPicker(field.type, field, refs, formik)}
 
-type TFieldType = "text" | "file" | "date" | "popform";
-
-const fieldComponentPicker = (
-  type: TFieldType,
-  field: { [key: string]: any },
-  ref: React.MutableRefObject<any>,
-  formik: FormikProps<any>
-): JSX.Element | undefined => {
-  switch (type) {
-    case "text": {
-      return <InputField formik={formik} field={field} ref={ref} />;
-    }
-    default:
-      throw new Error("invalid field type");
-  }
+        <div className="container">
+          <div className="row align-items-center justify-content-center">
+            <LabelWrapper>
+              <div className="d-none" />
+            </LabelWrapper>
+            <FieldWrapper>
+              <ErrorMessage
+                name={field.name}
+                render={(message) => (
+                  <div id={`${field.name}-error`} className={"error-message"}>
+                    {message}
+                  </div>
+                )}
+              />
+            </FieldWrapper>
+          </div>
+        </div>
+      </aside>
+    </div>
+  );
 };
 
-const FormComponents = React.forwardRef(
-  ({ field, formik }: IFormComponents, ref: any) => {
-    return (
-      <div className="col-12 my-5">
-        {fieldComponentPicker(field.type, field, ref, formik)}
-
-        {<ErrorMessage name={field.name} />}
-      </div>
-    );
-  }
-);
 export default FormComponents;
