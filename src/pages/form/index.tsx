@@ -5,7 +5,7 @@ import { fields } from "../../data";
 
 const makeApicall = () => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(fields), 1000);
+    setTimeout(() => resolve(fields), 500);
   });
 };
 
