@@ -1,38 +1,68 @@
 import React from "react";
 
-import { Field } from "formik";
+import { Field, FormikProps } from "formik";
 
 import styles from "./index.module.scss";
+import LabelWrapper from "../label-wrapper";
+import FieldWrapper from "../field-wrapper";
+import Label from "../label";
+import Tooltip from "../tool-tip";
+import { parseClassName } from "../../../utils";
 
-const SelectField = ({ label, name, options }: any) => {
-  typeof options === "string" &&
-    (options = options.replace(/[{}]/g, "").split(","));
+interface ISelectField {
+  formik: FormikProps<any>;
+  field: { [key: string]: any };
+}
 
-  return (
-    <>
-      <section className="container-fluid">
-        <div className="row">
-          <div
-            className={`col-3 d-flex align-items-center justify-content-end mr-0 pr-0`}
+const SelectField = React.forwardRef(
+  (
+    {
+      formik,
+      field: { label, name, validation, tooltip, options },
+    }: ISelectField,
+    ref: any
+  ) => {
+    typeof options === "string" &&
+      (options = options.replace(/[{}]/g, "").split(","));
+
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      formik.setFieldTouched(name);
+      formik.setFieldValue(name, e.target.value);
+    };
+
+    const isError: boolean = !!formik.errors[name] && !!formik.touched[name];
+
+    return (
+      <>
+        <LabelWrapper>
+          <Label name={name} label={label} validation={validation} />
+        </LabelWrapper>
+
+        <FieldWrapper>
+          <select
+            name={name}
+            className={parseClassName([
+              "w-100",
+              styles.field,
+              isError ? styles.error : "",
+            ])}
+            ref={ref}
+            onChange={handleChange}
           >
-            <div className={styles.label}>{label}</div>
-          </div>
+            <option value=""></option>
+            {options.length > 0 &&
+              options.map((option: any) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+          </select>
 
-          <div className="col-9 pl-2">
-            <Field as="select" name={name} className={`${styles.field}`}>
-              <option></option>
-              {options?.length > 0 &&
-                options.map((option: any) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-            </Field>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
+          {!!tooltip && <Tooltip content={tooltip} id={name} />}
+        </FieldWrapper>
+      </>
+    );
+  }
+);
 
 export default SelectField;
