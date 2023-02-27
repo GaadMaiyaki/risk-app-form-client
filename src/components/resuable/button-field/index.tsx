@@ -1,64 +1,76 @@
 import React from "react";
 
+import { FormikProps } from "formik";
+
 import styles from "./index.module.scss";
 
-//interface ISelectProps {
-//  label: string;
-//  name: string;
-//  type: string;
-//  options: any;
-//  relay?: boolean;
-//  formik: any;
-//}
+import LabelWrapper from "../label-wrapper";
+import FieldWrapper from "../field-wrapper";
 
-const ButtonField = ({ label, name, type, options, formik }: any) => {
-  const currentValue = formik.values?.[name];
+import Tooltip from "../tool-tip";
+import Label from "../label";
 
-  const handleClick = (option: string) => {
-    let saveValue = option;
+import { parseClassName } from "./../../../utils";
 
-    if (currentValue === option) {
-      formik.setFieldValue(name, null);
-      return;
-    }
+interface IInputField {
+  formik: FormikProps<any>;
+  field: { [key: string]: any };
+}
 
-    formik.setFieldValue(name, saveValue);
-  };
+const ButtonField = React.forwardRef(
+  (
+    {
+      field: { name, validation, label, options, tooltip },
+      formik,
+    }: IInputField,
+    ref: any
+  ) => {
+    const currentValue = formik.values?.[name];
 
-  typeof options === "string" &&
-    (options = options.replace(/[{}]/g, "").split(","));
+    const handleClick = (option: string) => {
+      formik.setFieldTouched(name);
 
-  return (
-    <>
-      <section className="container-fluid">
-        <div className="row mt-1">
-          <div
-            className={`col-3 d-flex align-items-center justify-content-end mr-0 pr-0`}
-          >
-            <div className={styles.label}>{label}</div>
-          </div>
+      if (currentValue === option) {
+        formik.setFieldValue(name, null);
+        return;
+      }
 
-          <div className="col-9 pl-2">
-            {options.map((option: string, i: number) => (
-              <button
-                type="button"
-                key={i}
-                onClick={() => handleClick(option)}
-                className={`px-3 py-1 ${styles.button} ${
-                  currentValue === option ? styles.picked : ""
-                }
-                ${options?.length > 4 && "mb-2"}
-                ${i > 0 ? "ml-2" : ""}
-                `}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
+      formik.setFieldValue(name, option);
+    };
+
+    typeof options === "string" &&
+      (options = options.replace(/[{}]/g, "").split(","));
+
+    return (
+      <>
+        <LabelWrapper>
+          <Label name={name} label={label} validation={validation} />
+        </LabelWrapper>
+
+        <FieldWrapper withJustify>
+          {options.map((option: string, i: number) => (
+            <button
+              type="button"
+              key={i}
+              ref={i === 0 ? ref : null}
+              onClick={() => handleClick(option)}
+              className={parseClassName([
+                "px-3 py-1",
+                styles.button,
+                currentValue === option ? styles.picked : "",
+                options.length > 7 ? "mb-2" : "",
+                i > 0 ? "ms-2" : "",
+              ])}
+            >
+              {option}
+            </button>
+          ))}
+
+          {!!tooltip && <Tooltip content={tooltip} id={name} />}
+        </FieldWrapper>
+      </>
+    );
+  }
+);
 
 export default ButtonField;
