@@ -1,3 +1,9 @@
+import React from "react";
+
+import * as Yup from "yup";
+
+import { parsePhoneNumberFromString } from "libphonenumber-js";
+
 export const parseClassName = (classes: Array<string>): string => {
   return classes.filter(Boolean).join(" ");
 };
@@ -16,10 +22,6 @@ export const debounce = <T>(
     }, delay);
   };
 };
-
-export const structuredValidationSchema = (data: Array<any>) => {};
-
-export const structuredInitialValues = (data: Array<any>) => {};
 
 export const structredFormGroup = (
   fields: Array<{ [key: string]: any }>
@@ -56,17 +58,29 @@ export const flatData = (data: Array<any>) => {
 };
 
 export const extractDataValue = (fields: Array<any>) => {
-  return fields.reduce((acc, { name, value }) => {
-    acc[name] = value;
+  if (fields?.length <= 0) return null;
 
-    return acc;
-  }, {});
+  let obj: any = {};
 
-  // return flatData(data).reduce((acc, { name, value }) => {
-  //   acc[name] = value;
+  for (const field of fields) {
+    if (!!field?.children) {
+      obj = { ...obj, ...extractDataValue(field.children) };
+    } else {
+      const { name, value } = field;
+      obj[name] = value || "";
+    }
+  }
 
-  //   return acc;
-  // }, {});
+  return obj;
+};
+
+export const displayControllerSection = (
+  deps: Array<any>,
+  values: Array<any>
+) => {
+  return (deps || []).every(({ name, value }: { [key: string]: any }) => {
+    return values[name] === value;
+  });
 };
 
 export const displayController = (
@@ -76,14 +90,14 @@ export const displayController = (
   const valueDependecy =
     !!deps &&
     !!deps.length &&
-    deps.every(({ name, value }: { [key: string]: any }) => {
+    (deps || []).every(({ name, value }: { [key: string]: any }) => {
       return values[name] === value;
     });
 
   const displayDependency =
     !!deps &&
     !!deps.length &&
-    deps.some((name: string) => {
+    (deps || []).some((name: string) => {
       return !values[name];
     });
 
@@ -93,16 +107,78 @@ export const displayController = (
   };
 };
 
-export const validatorProcessor = (Yup: any, fields: Array<any>) => {
-  return Yup.object().shape({
-    ...(flatData(fields) || []).reduce((acc, { validation, name }) => {
-      if (!!validation) {
-        acc[name] = Yup.string().required(`This field is required.`);
-      }
+const getYupSchema = ({ type, message, regex, label }: any) => {
+  console.log(type, message, regex, label, "parameters man");
+  switch (type) {
+    case "text": {
+      return Yup.string()
+        .nullable()
+        .required(message || `${label} is required.`);
+    }
+    case "number": {
+      return Yup.number()
+        .nullable()
+        .required(message || `${label} is required.`);
+    }
+    case "email": {
+      return Yup.string()
+        .nullable()
+        .email("Provide a valid email")
+        .required(message || `${label} is required.`);
+    }
+    case "tel": {
+      return Yup.string()
+        .nullable()
+        .matches(
+          new RegExp(/^\+1 \(\d{3}\) \d{3}-\d{4}$/),
+          "Invalid phone number format"
+        )
+        .required(message || `${label} is required.`);
+    }
+    default:
+      throw new Error("Invalid type");
+  }
+};
 
-      return acc;
-    }, {}),
-  });
+export const validatorProcessor = (fields: Array<any>) => {
+  fields = flatData(fields);
+
+  if (fields?.length <= 0) return null;
+
+  let obj: any = {};
+
+  for (const field of fields) {
+    if (!!field?.children && !!field.validation) {
+      for (const {
+        name,
+        label,
+        validation: { type, message, regex },
+      } of field.children) {
+        obj[name] = getYupSchema({
+          type,
+          message,
+          regex,
+          label,
+        });
+      }
+    } else {
+      if (!!field.validation) {
+        const {
+          name,
+          label,
+          validation: { type, message, regex },
+        } = field;
+
+        obj[name] = getYupSchema({
+          type,
+          message,
+          regex,
+          label,
+        });
+      }
+    }
+  }
+  return Yup.object().shape(obj);
 };
 
 export const formatCurrency = (value: number, currency: string) => {
@@ -148,12 +224,43 @@ export const changeEventProcessor = ({
 
         if (!relativeValue) {
           formik.setFieldValue(name, "");
-          return;
         }
       };
+    }
+    case "phone": {
+      return (e: React.ChangeEvent<any>): void => {
+        const { name, value } = e.target;
+        formik.setFieldValue(name, value);
+      };
+
+      //  try {
+      //    const parsedNumber = parsePhoneNumberFromString("+1" + value, "US");
+      //    formik.setFieldValue(name, parsedNumber?.formatNational());
+      //  } catch (e) {
+      //    // Handle invalid phone number input
+      //    console.log("error occcured");
+      //    //formik.setFieldValue(name, "+1" + value);
+      //  }
+      //};
     }
 
     default:
       throw new Error("Unknown formatting type");
   }
+};
+
+export const handleError = (
+  errors: any,
+  refs: { [key: string]: React.MutableRefObject<any> }
+) => {
+  const errorNamesArr = Object.keys(errors || {});
+
+  errorNamesArr?.length > 0 &&
+    errorNamesArr.forEach((name) => {
+      refs[name].current?.scrollIntoView({
+        block: "center",
+        inline: "center",
+      });
+      refs[name].current?.focus();
+    });
 };
