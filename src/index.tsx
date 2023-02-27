@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./index.scss";
+import "react-tooltip/dist/react-tooltip.css";
 
 import App from "./App";
 
@@ -15,6 +16,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
+    {/*<Tooltip id="my-tooltip" />*/}
     <React.Suspense fallback={<div>booting up...</div>}>
       <Router>
         <App />
