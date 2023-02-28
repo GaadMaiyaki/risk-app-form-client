@@ -1,6 +1,6 @@
 import React from "react";
 
-const ForwardSvg = ({ color }: {color: string}) => {
+const ForwardSvg = ({ color = "rgba(0, 0, 0, 1)" }: { color?: string }) => {
   return (
     <svg
       width="7"
