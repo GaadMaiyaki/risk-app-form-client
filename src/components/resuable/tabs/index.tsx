@@ -5,28 +5,48 @@ import styles from "./index.module.scss";
 import { flatData, parseClassName } from "./../../../utils";
 
 interface ITabs {
-  children: React.ReactNode;
   section: number;
   data: Array<any>;
 }
 
-const Tabs = ({ children, data, section }: ITabs) => {
+const Tabs = ({ data, section }: ITabs) => {
+  const ref = React.useRef<any>(null);
+
+  React.useEffect(() => {
+    section > 1 &&
+      ref.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+  }, [section]);
+
   return (
-    <section className="position-relative">
-      {/*<div className={`position-relative d-flex  ${styles.wrapper} w-100`}>
-        <div
-          className={parseClassName([styles.p, "align-items-center "])}
-          style={{ width: `${section * 10}%` }}
-        ></div>
+    <section
+      className={parseClassName([
+        "position-relative mt-3 py-2",
+        styles.wrapper,
+      ])}
+    >
+      <div
+        arial-live="polite"
+        role="tablist"
+        className={parseClassName([
+          "position-relative d-flex w-100",
+          styles.innerWrapper,
+        ])}
+      >
         {Object.entries(data).map(([key, value], i): any => {
-          console.log(i, "this is i man");
           return (
             <div
+              role="tab"
+              arial-selected={(section === i + 1)?.toString()}
               key={i}
+              ref={section === i + 1 ? ref : null}
               className={parseClassName([
-                "text-white py-1 px-2 rounded text-center",
+                "py-1 px-3 rounded text-center",
                 i === 0 ? "" : "mx-2",
-                +key === section ? `bg-primary` : "bg-dark",
+                +key === section ? styles.bold : styles.light,
               ])}
               style={{ marginRight: i === 0 ? "8px" : "" }}
             >
@@ -34,15 +54,7 @@ const Tabs = ({ children, data, section }: ITabs) => {
             </div>
           );
         })}
-        <div
-          className={parseClassName([styles.show])}
-          style={{ width: `${6 * 10}vw` }}
-        ></div>
-      </div>*/}
-
-      {children}
-
-      {/*<button>here man</button>*/}
+      </div>
     </section>
   );
 };
