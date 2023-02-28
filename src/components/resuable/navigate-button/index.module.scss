@@ -7,11 +7,11 @@
 }
 
 .wrapper {
-  > button[data-shouldPrevious="false"] {
+  > button[data-shouldprevious="false"] {
     @extend .svgProperty;
   }
 
-  > button[data-shouldNext="false"] {
+  > button[data-shouldnext="false"] {
     @extend .svgProperty;
   }
 
@@ -26,8 +26,7 @@
     }
 
     &:focus {
-      outline: 0;
-      outline-color: var(--risk-primary);
+      outline-color: var(--risk-primary-light);
     }
 
     &:disabled {
