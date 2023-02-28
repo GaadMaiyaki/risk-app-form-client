@@ -14,7 +14,7 @@ export const useFormProcessor = (
     section: number;
     shouldNext: boolean;
     shouldPrevious: boolean;
-    getPreviousSectionName(): string;
+    getPreviousSectionName(): string | undefined;
     getNextSectionName(): string;
   },
   (type: "next" | "previous" | "default", value?: number) => void
@@ -44,7 +44,8 @@ export const useFormProcessor = (
   const shouldNext: boolean = section <= formSections.length - 1;
   const shouldPrevious: boolean = section > 1;
 
-  const getPreviousSectionName = (): string => {
+  const getPreviousSectionName = (): string | undefined => {
+    if (section === 1) return undefined;
     return flatData(
       Object.values(groupedFields[section > 2 ? section - 1 : 1] || [])
     )?.[0]?.section_name;
