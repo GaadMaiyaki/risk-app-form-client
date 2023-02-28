@@ -19,7 +19,7 @@ const FormComponents = ({ field, formik, refs }: IFormComponents) => {
       <aside className="row align-items-center justify-content-center">
         {fieldComponentPicker(field.type, field, refs, formik)}
 
-        <div className="container">
+        <div className="container-fluid">
           <div className="row align-items-center justify-content-center">
             <LabelWrapper>
               <div className="d-none" />
