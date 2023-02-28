@@ -2,13 +2,12 @@ import React from "react";
 
 import { Formik, Form, FormikProps } from "formik";
 
-import * as Yup from "yup";
-
 import { useFormProcessor } from "./../../hooks/useFormProcessor";
 import { useRefs } from "./../../hooks/useRefs";
 
 import Tabs from "../resuable/tabs";
 import Button from "../resuable/button";
+import NavigateButton from "../resuable/navigate-button";
 
 import FormProccessor from "../form-processor";
 
@@ -37,13 +36,29 @@ const FormProvider = ({ data }: IFormProvider) => {
     [key: string]: React.MutableRefObject<any>;
   } = useRefs(data);
 
-  console.log(currentSection, "this is current section man");
+  const handleNext = (formik: FormikProps<any>) => {
+    //!formik.isValid && handleError(formik.errors, refs);
+
+    //formik.isValid&&
+    handleSectionChange("next");
+
+    //formik.setSubmitting(false);
+  };
+
+  const handlePrevious = (formik: FormikProps<any>) => {
+    //formik.isValid&&
+    handleSectionChange("previous");
+
+    //!formik.isValid && handleError(formik.errors, refs);
+
+    //formik.setSubmitting(false);
+  };
 
   return (
     <Tabs data={groupedFields} section={section}>
       <Formik
         initialValues={extractDataValue(data)}
-        validationSchema={validatorProcessor(currentSection)}
+        //validationSchema={validatorProcessor(currentSection)}
         validateOnMount
         onSubmit={(v, f: any) => {
           console.log(v, "this is value", f, "this is error");
@@ -51,53 +66,22 @@ const FormProvider = ({ data }: IFormProvider) => {
       >
         {(formik: FormikProps<any>) => {
           return (
-            <Form>
+            <Form className="py-5">
               <FormProccessor
                 fields={currentSection}
                 formik={formik}
                 refs={refs}
               />
-              {console.log(formik, "formik") as any}
 
               <aside className="my-5 text-center">
-                <Button
-                  onClick={() => {
-                    formik.isValid && handleSectionChange("previous");
-
-                    !formik.isValid && handleError(formik.errors, refs);
-
-                    formik.setSubmitting(false);
-                  }}
+                <NavigateButton
+                  handleNext={() => handleNext(formik)}
+                  handlePrevious={() => handlePrevious(formik)}
                   type="submit"
-                  title=""
-                  color="primary"
-                  size="lg"
-                  label="Previous"
-                  disabled={!shouldPrevious}
-                  classes="bg-none"
-                  renderComponent={() => (
-                    <span>{shouldPrevious && getPreviousSectionName()}</span>
-                  )}
-                />
-
-                <Button
-                  onClick={() => {
-                    !formik.isValid && handleError(formik.errors, refs);
-
-                    formik.isValid && handleSectionChange("next");
-
-                    formik.setSubmitting(false);
-                  }}
-                  type="submit"
-                  title=""
-                  color="primary"
-                  size="lg"
-                  label="Next"
-                  disabled={!shouldNext}
-                  classes="mx-2 bg-none"
-                  renderComponent={() => (
-                    <span>{shouldNext && getNextSectionName()}</span>
-                  )}
+                  shouldNext={shouldNext}
+                  shouldPrevious={shouldPrevious}
+                  previousSectionName={getPreviousSectionName()}
+                  nextSectionName={getNextSectionName()}
                 />
               </aside>
 
@@ -106,10 +90,10 @@ const FormProvider = ({ data }: IFormProvider) => {
                   <Button
                     type="submit"
                     title="Submit Form"
-                    color="primary"
+                    color="secondary"
                     size="lg"
-                    label="Next"
-                    classes="w-100 mb-3"
+                    label="Submit Form"
+                    classes="w-100 mb-3 py-2"
                   />
                 )}
               </aside>
