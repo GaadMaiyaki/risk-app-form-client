@@ -6,15 +6,15 @@ import * as Yup from "yup";
 import styles from "./index.module.scss";
 
 import OtpInput from "../resuable/otp-input";
-
 import Button from "../resuable/button";
 
 import ClientSvg from "../../icons/svgs/client";
 
 import { parseClassName } from "./../../utils";
 
-import { useNavigate } from "react-router-dom";
-import { usePost } from "./../../services/mutations/index";
+import {useNavigate} from "react-router-dom";
+
+import { usePost } from "./../../services/mutations";
 
 const validationSchema = Yup.object().shape({
   otp: Yup.string()
