@@ -55,7 +55,8 @@ const FormProvider = ({ data }: IFormProvider) => {
   };
 
   return (
-    <Tabs data={groupedFields} section={section}>
+    <>
+      <Tabs data={groupedFields} section={section} />
       <Formik
         initialValues={extractDataValue(data)}
         //validationSchema={validatorProcessor(currentSection)}
@@ -66,7 +67,7 @@ const FormProvider = ({ data }: IFormProvider) => {
       >
         {(formik: FormikProps<any>) => {
           return (
-            <Form className="py-5">
+            <Form className="pb-5">
               <FormProccessor
                 fields={currentSection}
                 formik={formik}
@@ -101,7 +102,7 @@ const FormProvider = ({ data }: IFormProvider) => {
           );
         }}
       </Formik>
-    </Tabs>
+    </>
   );
 };
 
