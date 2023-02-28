@@ -1,0 +1,43 @@
+@import "../../../styles/_mixins.scss";
+
+.svgProperty {
+  svg {
+    opacity: 0.2;
+  }
+}
+
+.wrapper {
+  > button[data-shouldPrevious="false"] {
+    @extend .svgProperty;
+  }
+
+  > button[data-shouldNext="false"] {
+    @extend .svgProperty;
+  }
+
+  > button {
+    border: 0;
+    background-color: transparent;
+    transition: 0.3s ease-in-out;
+    @include font(1em, 500);
+
+    &:hover {
+      opacity: 0.9;
+    }
+
+    &:focus {
+      outline: 0;
+      outline-color: var(--risk-primary);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    > span {
+      color: var(--risk-secondary);
+      @include font(1em, 400);
+    }
+  }
+}
