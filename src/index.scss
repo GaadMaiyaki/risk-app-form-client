@@ -16,7 +16,7 @@ select:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px var(--white) inset !important;
 }
 
-*::selection {
+*::selection:not(input) {
   box-shadow: 0 0 0 1000px var(--white) inset !important;
   -webkit-box-shadow: 0 0 0 1000px var(--white) inset !important;
 }
