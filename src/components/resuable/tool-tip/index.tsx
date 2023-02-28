@@ -11,7 +11,7 @@ const Tooltip = React.memo(
     return (
       <section className={styles.wrapper}>
         <ReactTooltip
-          style={{ maxWidth: "200px", textAlign: "left" }}
+          style={{ maxWidth: "210px", textAlign: "left" }}
           id={id}
           content={content}
           place={"right"}
