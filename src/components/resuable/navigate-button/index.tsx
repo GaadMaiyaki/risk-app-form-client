@@ -36,18 +36,18 @@ const NavigateButton = ({
     >
       <button
         className="d-flex flex-column flex-md-row flex-lg-row flex-xl-row flex-xxl-row align-items-center me-4"
-        data-shouldPrevious={shouldPrevious}
+        data-shouldprevious={shouldPrevious}
         type={type}
         disabled={!shouldPrevious}
         arial-label={
           !!previousSectionName
-            ? `Go to ${previousSectionName}`
-            : "Section begins here"
+            ? `Go to ${previousSectionName} section`
+            : "Form sections begin here"
         }
         title={
           !!previousSectionName
-            ? `Go to ${previousSectionName}`
-            : "Section begins here"
+            ? `Go to ${previousSectionName} section`
+            : "Form sections begin here"
         }
         onClick={handlePrevious}
       >
@@ -65,14 +65,18 @@ const NavigateButton = ({
         type={type}
         disabled={!shouldNext}
         arial-label={
-          !!nextSectionName ? `Go to ${nextSectionName}` : "Section ends here"
+          !!nextSectionName
+            ? `Go to ${nextSectionName} section`
+            : "Form sections end here"
         }
         title={
-          !!nextSectionName ? `Go to ${nextSectionName}` : "Section ends here"
+          !!nextSectionName
+            ? `Go to ${nextSectionName} section`
+            : "Form sections end here"
         }
         onClick={handleNext}
         className="d-flex flex-column flex-md-row flex-lg-row flex-xl-row flex-xxl-row align-items-center ms-2"
-        data-shouldNext={shouldNext}
+        data-shouldnext={shouldNext}
       >
         <aside className="me-3">Next</aside>
 
