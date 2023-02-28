@@ -14,6 +14,7 @@ import ClientSvg from "../../icons/svgs/client";
 import { parseClassName } from "./../../utils";
 
 import { useNavigate } from "react-router-dom";
+import { usePost } from "./../../services/mutations/index";
 
 const validationSchema = Yup.object().shape({
   otp: Yup.string()
@@ -22,8 +23,19 @@ const validationSchema = Yup.object().shape({
 });
 
 const Auth = () => {
+  const { mutate, isLoading, isError, error } = usePost("/login");
+
   const handleSubmit = (values: FormikValues) => {
     console.log("submitting this", values);
+    mutate(values, {
+      onSuccess: () => {
+        alert("success");
+        navigate("/form");
+      },
+      onError: () => {
+        alert("an error occured.");
+      },
+    });
   };
 
   const navigate = useNavigate();
