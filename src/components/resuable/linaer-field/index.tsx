@@ -49,6 +49,7 @@ const LinearField = React.forwardRef(
 
               return (
                 <aside
+                  key={index}
                   className={parseClassName([
                     "w-100",
                     index === 1 ? "mx-3" : "",
