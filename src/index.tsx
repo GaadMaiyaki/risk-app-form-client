@@ -8,7 +8,13 @@ import App from "./App";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { QueryClientProvider, QueryClient } from "react-query";
+
+import { ReactQueryDevtools } from "react-query/devtools";
+
 import reportWebVitals from "./reportWebVitals";
+
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -18,7 +24,10 @@ root.render(
   <React.StrictMode>
     <React.Suspense fallback={<div>booting up...</div>}>
       <Router>
-        <App />
+        <QueryClientProvider client={queryClient}>
+          <App />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
       </Router>
     </React.Suspense>
   </React.StrictMode>
