@@ -1,6 +1,6 @@
 import React from "react";
 
-const BackwardSvg = ({ color }: { color: string }) => {
+const BackwardSvg = ({ color = "rgba(0, 0, 0, 1)" }: { color?: string }) => {
   return (
     <svg
       width="7"
