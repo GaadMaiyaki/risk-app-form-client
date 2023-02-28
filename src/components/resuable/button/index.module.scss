@@ -4,7 +4,7 @@
 .btn {
   border: 0;
   outline: 0;
-  transition: 0.3s;
+  transition: 0.3s ease-in-out;
   color: var(--white);
 
   &:hover {
@@ -35,5 +35,5 @@
 }
 
 .lg {
-  @include font(1.2em, 400);
+  @include font(1.1em, 400);
 }
