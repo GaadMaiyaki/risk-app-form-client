@@ -16,7 +16,6 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    {/*<Tooltip id="my-tooltip" />*/}
     <React.Suspense fallback={<div>booting up...</div>}>
       <Router>
         <App />
@@ -206,3 +205,45 @@ reportWebVitals();
 
 //  return false;
 //};
+
+{
+  /*<Button
+                  onClick={() => {
+                    formik.isValid && handleSectionChange("previous");
+
+                    !formik.isValid && handleError(formik.errors, refs);
+
+                    formik.setSubmitting(false);
+                  }}
+                  type="submit"
+                  title=""
+                  color="primary"
+                  size="lg"
+                  label="Previous"
+                  disabled={!shouldPrevious}
+                  classes="bg-none"
+                  renderComponent={() => (
+                    <span>{shouldPrevious && getPreviousSectionName()}</span>
+                  )}
+                />
+
+                <Button
+                  onClick={() => {
+                    !formik.isValid && handleError(formik.errors, refs);
+
+                    formik.isValid && handleSectionChange("next");
+
+                    formik.setSubmitting(false);
+                  }}
+                  type="submit"
+                  title=""
+                  color="primary"
+                  size="lg"
+                  label="Next"
+                  disabled={!shouldNext}
+                  classes="mx-2 bg-none"
+                  renderComponent={() => (
+                    <span>{shouldNext && getNextSectionName()}</span>
+                  )}
+                />*/
+}
