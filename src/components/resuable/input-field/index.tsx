@@ -49,7 +49,7 @@ const InputField = React.forwardRef(
             autoCorrect="false"
           />
 
-          {!!tooltip && <Tooltip content={tooltip} id={name} />}
+          {/*{!!tooltip && <Tooltip content={tooltip} id={name} />}*/}
         </FieldWrapper>
       </>
     );
