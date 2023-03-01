@@ -1,9 +1,9 @@
 import { useMutation } from "react-query";
 
-import HTTP from "../http-method";
+import HTTPService from "../http/index";
 
 export const usePost = (key: string) => {
   return useMutation((payload: { [key: string]: any }) =>
-    HTTP.post(key, payload)
+    HTTPService.post(key, payload)
   );
 };
