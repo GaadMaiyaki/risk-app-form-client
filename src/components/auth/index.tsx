@@ -12,9 +12,10 @@ import ClientSvg from "../../icons/svgs/client";
 
 import { parseClassName } from "./../../utils";
 
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { usePost } from "./../../services/mutations";
+import LocalStorageService from "../../services/local-storage";
 
 const validationSchema = Yup.object().shape({
   otp: Yup.string()
@@ -23,17 +24,25 @@ const validationSchema = Yup.object().shape({
 });
 
 const Auth = () => {
-  const { mutate, isLoading, isError, error } = usePost("/login");
+  const { mutate, isLoading, isError, error } = usePost("/logi");
 
   const handleSubmit = (values: FormikValues) => {
     console.log("submitting this", values);
-    mutate(values, {
-      onSuccess: () => {
-        alert("success");
-        navigate("/form");
+    const payload = { email: values.otp };
+
+    mutate(payload, {
+      onSuccess: (data) => {
+        console.log(data, "this is the data after");
+        LocalStorageService.set(
+          `${process.env.REACT_APP_USER}`,
+          data.data.jwt.token
+        );
+        //alert("success");
+        //navigate("/form");
       },
-      onError: () => {
-        alert("an error occured.");
+      onError: (err) => {
+        console.log(err, "error man");
+        //alert("an error occured.");
       },
     });
   };
@@ -76,7 +85,7 @@ const Auth = () => {
                   type: "submit",
                   title: "Continue form submission",
                   classes: "py-3 px-5 mt-5",
-                  disabled: false,
+                  disabled: isLoading,
                 }}
               />
             </Form>
