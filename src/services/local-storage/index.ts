@@ -1,5 +1,4 @@
 class LocalStorageService {
-  constructor() {}
 
   static get(key: string) {
     try {
