@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 
-import HTTP from "../http-method";
+import HTTPService from "../http/index";
 
 export const useGet = (path: string) => {
-  return useQuery([path], () => HTTP.get(path));
+  return useQuery([path], () => HTTPService.get(path));
 };
