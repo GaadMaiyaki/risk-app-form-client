@@ -52,11 +52,11 @@ const NavigateButton = ({
         onClick={handlePrevious}
       >
         <BackwardSvg />
-        {shouldPrevious && (
+        {/*{shouldPrevious && (
           <span className="mx-3">
-            {/*<em>*/}[{previousSectionName}]{/*</em>*/}
+            <em>[{previousSectionName}]</em>
           </span>
-        )}
+        )}*/}
 
         <aside className="ms-2">Previous</aside>
       </button>
@@ -80,11 +80,13 @@ const NavigateButton = ({
       >
         <aside className="me-3">Next</aside>
 
-        {shouldNext && (
+        {/*{shouldNext && (
           <span className="me-3">
-            {/*<em>*/}[{nextSectionName}]{/*</em>*/}
+            <em>
+            [{nextSectionName}]
+            </em>
           </span>
-        )}
+        )}*/}
         <ForwardSvg />
       </button>
     </section>
