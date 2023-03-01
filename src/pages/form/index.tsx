@@ -1,4 +1,5 @@
 import React from "react";
+
 import FormProvider from "../../components/form-provider";
 
 import { fields } from "../../data";
@@ -38,11 +39,7 @@ const FormPage = () => {
     );
   }
 
-  return (
-    <section>
-      <FormProvider data={data} />
-    </section>
-  );
+  return <FormProvider data={data} />;
 };
 
 export default FormPage;
