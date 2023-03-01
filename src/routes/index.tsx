@@ -2,6 +2,10 @@ import React from "react";
 
 import { useRoutes } from "react-router-dom";
 
+import Protected from "../components/auth/protected";
+
+import LocalStorageService from "../services/local-storage";
+
 import HeaderFooterLayout from "./../layouts";
 
 const HomePage = React.lazy(() => import("../pages"));
@@ -20,7 +24,15 @@ const useCustomRoutes = () => {
         },
         {
           path: "form",
-          element: <FormPage />,
+          element: (
+            <Protected
+              isAuthenticated={
+                !!LocalStorageService.get(`${process.env.RISK_APP_USER}`)
+              }
+            >
+              <FormPage />
+            </Protected>
+          ),
         },
       ],
     },
