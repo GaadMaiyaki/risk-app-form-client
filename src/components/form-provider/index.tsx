@@ -56,7 +56,7 @@ const FormProvider = ({ data }: IFormProvider) => {
 
   return (
     <>
-      <Tabs data={groupedFields} section={section} />
+      {/*<Tabs data={groupedFields} section={section} />*/}
       <Formik
         initialValues={extractDataValue(data)}
         //validationSchema={validatorProcessor(currentSection)}
@@ -87,7 +87,7 @@ const FormProvider = ({ data }: IFormProvider) => {
               </aside>
 
               <aside className="text-center">
-                {section === formSections.length && (
+                {/*{section === formSections.length && (
                   <Button
                     type="submit"
                     title="Submit Form"
@@ -96,7 +96,7 @@ const FormProvider = ({ data }: IFormProvider) => {
                     label="Submit Form"
                     classes="w-100 mb-3 py-2"
                   />
-                )}
+                )}*/}
               </aside>
             </Form>
           );
