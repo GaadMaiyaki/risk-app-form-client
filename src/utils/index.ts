@@ -110,7 +110,6 @@ export const displayController = (
 };
 
 const getYupSchema = ({ type, message, regex, label }: any) => {
-  console.log(type, message, regex, label, "parameters man");
   switch (type) {
     case "text": {
       return Yup.string()
