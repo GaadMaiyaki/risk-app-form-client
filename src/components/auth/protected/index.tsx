@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Protected = ({
   isAuthenticated,
@@ -12,8 +12,7 @@ const Protected = ({
   const navigate = useNavigate();
 
   if (!isAuthenticated) {
-    navigate("/");
-    return null;
+    return <Navigate to="/" replace />;
   }
 
   return children;
