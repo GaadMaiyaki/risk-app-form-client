@@ -36,16 +36,19 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(error);
     }
 
-    if (errConfig?.url !== "/login" && error.response) {
+    if (errConfig?.url !== "/login") {
       if (error.response.status === 401 || error.response.status === 403) {
         LocalStorageService.remove(REACT_APP_USER);
+
         window.location.href = "/";
 
-        return Promise.reject(error);
+        return Promise.reject(error.response);
       }
 
-      return Promise.reject(error);
+      return Promise.reject(error.response);
     }
+
+    return Promise.reject(error.response);
   }
 );
 
