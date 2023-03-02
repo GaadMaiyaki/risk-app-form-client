@@ -5,10 +5,6 @@
   }
 }
 
-@mixin shadow($color: rgba(0, 0, 0, 0.1)) {
-  box-shadow: 0.5px 0.5px 10px $color;
-}
-
 @mixin scrollbars($size: 3px, $background-color: var(--deep-black)) {
   &::-webkit-scrollbar {
     width: $size;
