@@ -6,9 +6,7 @@ import CustomModal from "../modal";
 
 import { FormikState } from "formik";
 
-import FormRenderer from "../form-renderer";
 
-import TrackerFormWrapper from "../form-wrapper";
 
 const extractChildrenValue = (
   children: Array<any>,
@@ -69,14 +67,14 @@ const TrackerContactField = ({
           align: "align-items-center",
         }}
       >
-        <TrackerFormWrapper>
+        {/*<TrackerFormWrapper>*/}
           <section className={`${styles.formWrapper}`}>
-            <FormRenderer
+            {/*<FormRenderer
               {...{
                 data: children,
                 formik,
               }}
-            />
+            />*/}
             <aside className="mt-5 text-center">
               <button
                 className={`${styles.buttonStyle} ${styles.buttonBorder} mr-2 py-2`}
@@ -95,7 +93,7 @@ const TrackerContactField = ({
               </button>
             </aside>
           </section>
-        </TrackerFormWrapper>
+        {/*</TrackerFormWrapper>*/}
       </CustomModal>
 
       <section className="container-fluid">
