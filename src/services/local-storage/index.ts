@@ -1,5 +1,4 @@
 class LocalStorageService {
-
   static get(key: string) {
     try {
       return window.localStorage.getItem(key);
@@ -12,7 +11,7 @@ class LocalStorageService {
     try {
       window.localStorage.setItem(key, JSON.stringify(value));
     } catch (err) {
-      throw new Error("Couldn't save " + key);
+      throw new Error("Couldn't set " + key);
     }
   }
 
