@@ -1,20 +1,20 @@
 import axiosInstance from "../axios";
 
 class HTTPService {
-  static async post(path: string, data: any) {
+  static post = async (path: string, data: any) => {
     try {
       return await axiosInstance.post(path, data);
     } catch (err: any) {
-      throw new Error(err.response ? err.response : err);
+      throw new Error(err.data ? err.data?.message : err);
     }
-  }
-  static async get(path: string) {
+  };
+  static get = async (path: string) => {
     try {
       return await axiosInstance.get(path);
     } catch (err: any) {
-      throw new Error(err.response ? err.response : err);
+      throw new Error(err.data ? err.data?.message : err);
     }
-  }
+  };
 }
 
 export default HTTPService;
