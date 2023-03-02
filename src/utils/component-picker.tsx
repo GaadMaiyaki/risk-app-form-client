@@ -2,7 +2,7 @@ import { FormikProps } from "formik";
 
 import ButtonField from "../components/resuable/button-field";
 import InputField from "../components/resuable/input-field";
-import LinearField from "../components/resuable/linaer-field";
+import LinearField from "../components/resuable/linear-field";
 import SelectField from "../components/resuable/select-field";
 
 type TFieldType =
