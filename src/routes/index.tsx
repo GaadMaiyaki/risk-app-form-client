@@ -27,7 +27,7 @@ const useCustomRoutes = () => {
           element: (
             <Protected
               isAuthenticated={
-                !!LocalStorageService.get(`${process.env.RISK_APP_USER}`)
+                !!LocalStorageService.get(`${process.env.REACT_APP_USER}`)
               }
             >
               <FormPage />
