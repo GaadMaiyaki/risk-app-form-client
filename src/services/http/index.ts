@@ -1,7 +1,7 @@
 import axiosInstance from "../axios";
 
 class HTTPService {
-  static post = async (path: string, data: any) => {
+  static post = async (path: string, data: { [key: string]: any }) => {
     try {
       return await axiosInstance.post(path, data);
     } catch (err: any) {
