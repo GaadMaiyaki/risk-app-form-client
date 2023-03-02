@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Formik, Form, FormikValues } from "formik";
 import * as Yup from "yup";
 
@@ -25,25 +23,21 @@ const validationSchema = Yup.object().shape({
 });
 
 const Auth = () => {
-  const { mutate, isLoading, isError, error } = usePost("/logi");
+  const { mutate, isLoading, isError, error } = usePost("/login");
 
   const handleSubmit = (values: FormikValues) => {
-    console.log("submitting this", values);
     const payload = { email: values.otp };
 
     mutate(payload, {
       onSuccess: (data) => {
-        console.log(data, "this is the data after");
         LocalStorageService.set(
           `${process.env.REACT_APP_USER}`,
-          data.data.jwt.token
+          data?.data.jwt.token
         );
-        //alert("success");
-        //navigate("/form");
+        navigate("../form", { replace: true });
       },
-      onError: (err) => {
-        console.log(err, "error man");
-        //alert("an error occured.");
+      onError: (err: any) => {
+        alert("an error occured. " + err?.message);
       },
     });
   };
@@ -51,14 +45,14 @@ const Auth = () => {
   const navigate = useNavigate();
 
   return (
-    <Formik
-      initialValues={{ otp: "" }}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      {(formik) => {
-        return (
-          <>
+    <>
+      <Formik
+        initialValues={{ otp: "" }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {(formik) => {
+          return (
             <Form className="text-center py-5">
               <div className={parseClassName(["mb-3", styles.title])}>
                 <ClientSvg />
@@ -90,10 +84,10 @@ const Auth = () => {
                 }}
               />
             </Form>
-          </>
-        );
-      }}
-    </Formik>
+          );
+        }}
+      </Formik>
+    </>
   );
 };
 
