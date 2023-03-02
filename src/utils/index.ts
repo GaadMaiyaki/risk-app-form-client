@@ -1,5 +1,7 @@
 import React from "react";
 
+import { FormikProps } from "formik";
+
 import * as Yup from "yup";
 
 //import { parsePhoneNumberFromString } from "libphonenumber-js";
@@ -189,43 +191,55 @@ export const formatCurrency = (value: number, currency: string) => {
   }).format(+value);
 };
 
+const currencyFormatter =
+  ({
+    formik,
+    formatting,
+  }: {
+    formik: FormikProps<any>;
+    formatting: { [key: string]: any };
+  }) =>
+  (e: React.ChangeEvent<any>): void => {
+    const { name, value } = e.target;
+
+    const relativeValue = value.includes(".")
+      ? value.replace(/[$,€]/g, "").split(".")
+      : value.replace(/[$,€]/g, "");
+
+    if (typeof relativeValue === "object") {
+      if (isNaN(+relativeValue[0]) || isNaN(+relativeValue[1])) return;
+
+      formik.setFieldValue(
+        name,
+        formatCurrency(+relativeValue[0], formatting.format) +
+          `.${relativeValue[1]}`
+      );
+    }
+
+    if (typeof relativeValue === "string" && !!relativeValue) {
+      if (isNaN(+relativeValue)) return;
+
+      formik.setFieldValue(
+        name,
+        formatCurrency(+relativeValue, formatting.format)
+      );
+    }
+
+    if (!relativeValue) {
+      formik.setFieldValue(name, "");
+    }
+  };
+
 export const changeEventProcessor = ({
   formatting,
   formik,
 }: {
-  formik: any;
+  formik: FormikProps<any>;
   formatting: { [key: string]: any };
 }) => {
   switch (formatting.type) {
     case "currency": {
-      return (e: React.ChangeEvent<any>): void => {
-        const { name, value } = e.target;
-
-        const relativeValue = value.includes(".")
-          ? value.replace(/[$,€]/g, "").split(".")
-          : value.replace(/[$,€]/g, "");
-
-        if (typeof relativeValue === "object") {
-          if (isNaN(+relativeValue[0]) || isNaN(+relativeValue[1])) return;
-          formik.setFieldValue(
-            name,
-            formatCurrency(+relativeValue[0], formatting.format) +
-              `.${relativeValue[1]}`
-          );
-        }
-
-        if (typeof relativeValue === "string" && !!relativeValue) {
-          if (isNaN(+relativeValue)) return;
-          formik.setFieldValue(
-            name,
-            formatCurrency(+relativeValue, formatting.format)
-          );
-        }
-
-        if (!relativeValue) {
-          formik.setFieldValue(name, "");
-        }
-      };
+      return currencyFormatter({ formik, formatting });
     }
     case "phone": {
       return (e: React.ChangeEvent<any>): void => {
