@@ -1,12 +1,15 @@
 import React from "react";
 
-import { Field, FormikProps } from "formik";
+import { FormikProps } from "formik";
 
 import styles from "./index.module.scss";
+
 import LabelWrapper from "../label-wrapper";
 import FieldWrapper from "../field-wrapper";
+
 import Label from "../label";
 import Tooltip from "../tool-tip";
+
 import { parseClassName } from "../../../utils";
 
 interface ISelectField {
