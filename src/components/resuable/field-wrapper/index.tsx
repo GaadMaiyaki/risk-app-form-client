@@ -2,8 +2,6 @@ import React from "react";
 
 import { parseClassName } from "./../../../utils";
 
-import styles from "./index.module.scss";
-
 interface IFieldWrapper {
   children: React.ReactNode;
   withYMargin?: boolean;
@@ -19,7 +17,6 @@ export const FieldWrapper = ({
     <div
       className={parseClassName([
         "col-12 col-md-9 col-lg-6 col-xl-6 col-xxl-6 pl-2",
-        styles.wrapper,
       ])}
     >
       <aside
