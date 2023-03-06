@@ -23,7 +23,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const Auth = () => {
-  const { mutate, isLoading, isError, error } = usePost("/login");
+  const { mutate, isLoading } = usePost("/login");
 
   const handleSubmit = (values: FormikValues) => {
     const payload = { email: values.otp };
@@ -37,7 +37,7 @@ const Auth = () => {
         navigate("../form", { replace: true });
       },
       onError: (err: any) => {
-        alert("an error occured. " + err?.message);
+        alert("Oops! An error occured. " + err?.message);
       },
     });
   };
@@ -73,7 +73,7 @@ const Auth = () => {
 
               <Button
                 {...{
-                  label: "Continue",
+                  label: isLoading ? "Connecting..." : "Continue",
                   onClick: () => console.log("h"),
                   color: "secondary",
                   size: "md",
