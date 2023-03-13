@@ -68,8 +68,8 @@ const LinearField = React.forwardRef(
                     onBlur={formik.handleBlur}
                     ref={!formik.values[name] ? ref : null}
                     onChange={handleChange}
-                    arial-label={label}
-                    arial-describeby={`${name}-error`}
+                    aria-label={label}
+                    aria-describeby={`${name}-error`}
                     autoComplete="false"
                     autoCorrect="false"
                   />
