@@ -43,8 +43,8 @@ const InputField = React.forwardRef(
             onBlur={formik.handleBlur}
             ref={ref}
             onChange={formik.handleChange}
-            arial-label={label}
-            arial-describeby={`${name}-error`}
+            aria-label={label}
+            aria-describeby={`${name}-error`}
             autoComplete="false"
             autoCorrect="false"
           />
