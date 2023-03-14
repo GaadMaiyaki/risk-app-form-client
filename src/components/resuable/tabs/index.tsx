@@ -29,7 +29,7 @@ const Tabs = ({ data, section }: ITabs) => {
       ])}
     >
       <div
-        arial-live="polite"
+        aria-live="polite"
         role="tablist"
         className={parseClassName([
           "position-relative d-flex w-100",
@@ -40,7 +40,7 @@ const Tabs = ({ data, section }: ITabs) => {
           return (
             <div
               role="tab"
-              arial-selected={(section === i + 1)?.toString()}
+              aria-selected={section === i + 1}
               key={i}
               ref={section === i + 1 ? ref : null}
               className={parseClassName([
