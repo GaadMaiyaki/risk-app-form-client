@@ -39,7 +39,8 @@ const NavigateButton = ({
         data-shouldprevious={shouldPrevious}
         type={type}
         disabled={!shouldPrevious}
-        arial-label={
+        aria-disabled={!shouldPrevious}
+        aria-label={
           !!previousSectionName
             ? `Go to ${previousSectionName} section`
             : "Form sections begin here"
@@ -64,7 +65,8 @@ const NavigateButton = ({
       <button
         type={type}
         disabled={!shouldNext}
-        arial-label={
+        aria-disabled={!shouldNext}
+        aria-label={
           !!nextSectionName
             ? `Go to ${nextSectionName} section`
             : "Form sections end here"
