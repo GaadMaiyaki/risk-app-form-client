@@ -69,7 +69,7 @@ const LinearField = React.forwardRef(
                     ref={!formik.values[name] ? ref : null}
                     onChange={handleChange}
                     aria-label={label}
-                    aria-describeby={`${name}-error`}
+                    aria-describedby={`${name}-error`}
                     autoComplete="false"
                     autoCorrect="false"
                   />
