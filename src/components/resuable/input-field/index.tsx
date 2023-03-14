@@ -44,7 +44,7 @@ const InputField = React.forwardRef(
             ref={ref}
             onChange={formik.handleChange}
             aria-label={label}
-            aria-describeby={`${name}-error`}
+            aria-describedby={`${name}-error`}
             autoComplete="false"
             autoCorrect="false"
           />
