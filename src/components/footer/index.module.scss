@@ -1,0 +1,14 @@
+@import "../../styles/_mixins.scss";
+
+.wrapper {
+  > div {
+    @include font(1em, 700, "Abhaya Libre");
+  }
+  > aside {
+    @include font(0.9em, 400, "Abhaya Libre");
+  }
+
+  left: 0;
+  bottom: 0;
+  background-color: var(--risk-bg-secondary);
+}
