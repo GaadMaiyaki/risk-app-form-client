@@ -1213,6 +1213,11 @@
   dependencies:
     "@floating-ui/core" "^1.1.0"
 
+"@gaadmaiyaki/field-checker@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@gaadmaiyaki/field-checker/-/field-checker-1.2.0.tgz#b8be507d65d027cbf72fe7e5d3b2d384bbb32f08"
+  integrity sha512-8djsFgaYEaxaDNi2LqIh5ckC97sTqLRzlTHHLTt6clY0v3wJG3EXOAF2+6IAvllCEeiIULkbu/GiRpOwwPUVfg==
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
