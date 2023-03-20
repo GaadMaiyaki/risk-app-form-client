@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <section
       className={parseClassName([
-        "row justify-content-center mt-5",
+        "row justify-content-center py-4",
         styles.wrapper,
       ])}
     >
