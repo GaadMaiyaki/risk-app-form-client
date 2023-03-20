@@ -13,20 +13,16 @@ const Tabs = ({ data, section }: ITabs) => {
   const ref = React.useRef<any>(null);
 
   React.useEffect(() => {
-    section > 1 &&
-      ref.current.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-        inline: "center",
-      });
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
   }, [section]);
 
   return (
     <section
-      className={parseClassName([
-        "position-relative mt-3 py-2",
-        styles.wrapper,
-      ])}
+      className={parseClassName(["position-relative py-2", styles.wrapper])}
     >
       <div
         aria-live="polite"
