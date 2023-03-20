@@ -1,15 +1,15 @@
 class LocalStorageService {
   static get(key: string) {
     try {
-      return window.localStorage.getItem(key);
+      return JSON.parse(localStorage.getItem(key) as any);
     } catch (err) {
-      throw new Error("Couldn't get " + key);
+      return null;
     }
   }
 
   static set(key: string, value: any) {
     try {
-      window.localStorage.setItem(key, JSON.stringify(value));
+      localStorage.setItem(key, JSON.stringify(value));
     } catch (err) {
       throw new Error("Couldn't set " + key);
     }
@@ -17,7 +17,7 @@ class LocalStorageService {
 
   static remove(key: string) {
     try {
-      return window.localStorage.removeItem(key);
+      return localStorage.removeItem(key);
     } catch (err) {
       throw new Error("Couldn't remove " + key);
     }
