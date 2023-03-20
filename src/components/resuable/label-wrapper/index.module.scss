@@ -3,5 +3,9 @@
 .wrapper {
   > label {
     @include font(1em, 500);
+
+    @media screen and (max-width: 900px) {
+      @include font(0.9em, 500);
+    }
   }
 }
