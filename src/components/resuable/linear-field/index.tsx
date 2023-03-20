@@ -31,11 +31,15 @@ const LinearField = React.forwardRef(
 
         <div
           className={parseClassName([
-            "col-12 col-md-9 col-lg-6 col-xl-6 col-xxl-6 pl-2",
+            "col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 pl-2",
             styles.wrapper,
           ])}
         >
-          <aside className={parseClassName(["d-flex align-items-start"])}>
+          <aside
+            className={parseClassName([
+              "d-flex flex-column flex-md-row flex-lg-row flex-xl-row flex-xxl-row align-items-start",
+            ])}
+          >
             {childrenFields.map(({ name, formatting }: any, index: number) => {
               const isError: boolean =
                 !!formik.errors[name] && !!formik.touched[name];
@@ -49,10 +53,12 @@ const LinearField = React.forwardRef(
 
               return (
                 <aside
-                  key={index}
+                  key={name}
                   className={parseClassName([
                     "w-100",
-                    index === 1 ? "mx-3" : "",
+                    index === 1
+                      ? "mx-0 mx-md-3 mx-lg-3 mx-xl-3 mx-xl-3 mx-xxl-3 my-1 my-md-0 my-lg-0 my-xl-0 my-xl-0 my-xxl-0"
+                      : "",
                   ])}
                 >
                   <input
