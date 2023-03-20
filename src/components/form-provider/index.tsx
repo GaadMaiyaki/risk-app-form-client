@@ -12,6 +12,8 @@ import NavigateButton from "../resuable/navigate-button";
 import FormProccessor from "../form-processor";
 
 import { extractDataValue, handleError, validatorProcessor } from "../../utils";
+import FormHeader from "../form-header";
+import FormFooter from "./../form-footer";
 
 interface IFormProvider {
   data: Array<any>;
@@ -36,7 +38,7 @@ const FormProvider = ({ data }: IFormProvider) => {
     [key: string]: React.MutableRefObject<any>;
   } = useRefs(data);
 
-  const handleNext = (formik: FormikProps<any>) => {
+  const handleNext = (formik: FormikProps<any>) => () => {
     //!formik.isValid && handleError(formik.errors, refs);
 
     //formik.isValid&&
@@ -45,7 +47,7 @@ const FormProvider = ({ data }: IFormProvider) => {
     //formik.setSubmitting(false);
   };
 
-  const handlePrevious = (formik: FormikProps<any>) => {
+  const handlePrevious = (formik: FormikProps<any>) => () => {
     //formik.isValid&&
     handleSectionChange("previous");
 
@@ -56,7 +58,7 @@ const FormProvider = ({ data }: IFormProvider) => {
 
   return (
     <>
-      {/*<Tabs data={groupedFields} section={section} />*/}
+      <Tabs data={groupedFields} section={section} />
       <Formik
         initialValues={extractDataValue(data)}
         //validationSchema={validatorProcessor(currentSection)}
@@ -67,17 +69,17 @@ const FormProvider = ({ data }: IFormProvider) => {
       >
         {(formik: FormikProps<any>) => {
           return (
-            <Form className="pb-5">
+            <Form>
               <FormProccessor
                 fields={currentSection}
                 formik={formik}
                 refs={refs}
               />
 
-              <aside className="my-5 text-center">
+              <aside className="mt-5 text-center">
                 <NavigateButton
-                  handleNext={() => handleNext(formik)}
-                  handlePrevious={() => handlePrevious(formik)}
+                  handleNext={handleNext(formik)}
+                  handlePrevious={handlePrevious(formik)}
                   type="submit"
                   shouldNext={shouldNext}
                   shouldPrevious={shouldPrevious}
