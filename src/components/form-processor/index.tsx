@@ -18,7 +18,7 @@ interface IFormProcessor {
   refs: { [key: string]: React.MutableRefObject<any> };
 }
 
-const FormProccessor = ({ fields, formik, refs }: IFormProcessor) => {
+const FormProcessor = ({ fields, formik, refs }: IFormProcessor) => {
   return (
     <section
       className={parseClassName(["container-fluid pt-5 pb-2", styles.wrapper])}
@@ -37,28 +37,19 @@ const FormProccessor = ({ fields, formik, refs }: IFormProcessor) => {
                   : formik.handleChange,
               };
 
-              if (!!field.value_deps) {
-                return displayController(field.value_deps, formik.values)
-                  .value_dep ? (
-                  <FormComponents
-                    field={field}
-                    refs={refs}
-                    formik={clonedFormik}
-                    key={field.name}
-                  />
-                ) : null;
+              if (
+                !!field.value_deps &&
+                !displayController(field.value_deps, formik.values).value_dep
+              ) {
+                return null;
               }
-              if (!!field.display_deps) {
-                return !displayController(field.display_deps, formik.values)
-                  .display_dep ? (
-                  <FormComponents
-                    field={field}
-                    refs={refs}
-                    formik={clonedFormik}
-                    key={field.name}
-                  />
-                ) : null;
+              if (
+                !!field.display_deps &&
+                displayController(field.display_deps, formik.values).display_dep
+              ) {
+                return null;
               }
+
               return (
                 <FormComponents
                   field={field}
@@ -75,4 +66,4 @@ const FormProccessor = ({ fields, formik, refs }: IFormProcessor) => {
   );
 };
 
-export default FormProccessor;
+export default FormProcessor;
