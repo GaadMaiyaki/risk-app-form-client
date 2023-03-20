@@ -30,10 +30,7 @@ const Auth = () => {
 
     mutate(payload, {
       onSuccess: (data) => {
-        LocalStorageService.set(
-          `${process.env.REACT_APP_USER}`,
-          data?.data.jwt.token
-        );
+        LocalStorageService.set(`${process.env.REACT_APP_USER}`, data.data);
         navigate("../form", { replace: true });
       },
       onError: (err: any) => {
@@ -53,8 +50,10 @@ const Auth = () => {
       >
         {(formik) => {
           return (
-            <Form className="text-center py-5">
-              <div className={parseClassName(["mb-3", styles.title])}>
+            <Form
+              className={parseClassName([styles.wrapper, "text-center py-2"])}
+            >
+              <div className="mb-3">
                 <ClientSvg />
 
                 <span className="mx-2">
