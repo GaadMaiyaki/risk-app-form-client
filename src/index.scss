@@ -4,10 +4,14 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", "Abhaya Libre", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  background-color: var(--risk-primary-dark);
+  min-height: 100vh;
+
+  @include scrollbars(5px);
 }
 
 input,
