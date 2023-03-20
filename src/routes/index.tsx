@@ -37,8 +37,13 @@ const useCustomRoutes = () => {
       ],
     },
     {
-      path: "*",
-      element: <NotFound />,
+      element: <HeaderFooterLayout />,
+      children: [
+        {
+          path: "*",
+          element: <NotFound />,
+        },
+      ],
     },
   ]);
 };
