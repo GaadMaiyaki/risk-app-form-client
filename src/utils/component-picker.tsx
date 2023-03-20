@@ -53,7 +53,8 @@ const fieldComponentPicker = (
       );
     }
     default:
-      throw new Error("invalid field type");
+      console.log(type, "hre man");
+    throw new Error("invalid field type");
   }
 };
 
