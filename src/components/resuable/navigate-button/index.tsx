@@ -30,12 +30,14 @@ const NavigateButton = ({
   return (
     <section
       className={parseClassName([
-        "d-flex align-items-center justify-content-center",
+        "d-flex align-items-center",
+        "justify-content-between justify-lg-content-center justify-content-xl-center justify-content-xxl-center",
+        "flex-column flex-md-row flex-lg-row flex-xl-row flex-xxl-row",
         styles.wrapper,
       ])}
     >
       <button
-        className="d-flex flex-column flex-md-row flex-lg-row flex-xl-row flex-xxl-row align-items-center me-4"
+        className="d-flex align-items-center me-4"
         data-shouldprevious={shouldPrevious}
         type={type}
         disabled={!shouldPrevious}
@@ -77,16 +79,14 @@ const NavigateButton = ({
             : "Form sections end here"
         }
         onClick={handleNext}
-        className="d-flex flex-column flex-md-row flex-lg-row flex-xl-row flex-xxl-row align-items-center ms-2"
+        className="d-flex align-items-center ms-2 mt-2 mt-md-0 mt-lg-0 mt-xl-0 mt-xxl-0"
         data-shouldnext={shouldNext}
       >
         <aside className="me-3">Next</aside>
 
         {/*{shouldNext && (
           <span className="me-3">
-            <em>
-            [{nextSectionName}]
-            </em>
+            <em>[{nextSectionName}]</em>
           </span>
         )}*/}
         <ForwardSvg />
