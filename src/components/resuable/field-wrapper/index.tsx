@@ -16,7 +16,7 @@ export const FieldWrapper = ({
   return (
     <div
       className={parseClassName([
-        "col-12 col-md-9 col-lg-6 col-xl-6 col-xxl-6 pl-2",
+        "col-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 pl-2",
       ])}
     >
       <aside
