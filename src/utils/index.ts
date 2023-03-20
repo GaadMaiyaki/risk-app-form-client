@@ -60,6 +60,7 @@ export const flatData = (data: Array<any>) => {
 };
 
 export const extractDataValue = (fields: Array<any>) => {
+  console.log(fields, "these are the fields");
   if (fields?.length <= 0) return null;
 
   let obj: any = {};
