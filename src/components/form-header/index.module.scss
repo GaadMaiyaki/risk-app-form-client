@@ -1,0 +1,24 @@
+@import "../../styles/_mixins.scss";
+
+.wrapper {
+  > div {
+    > h4 {
+      color: var(--risk-primary-dark);
+      @include font(1.7em, 600, "Abhaya Libre");
+
+      @media screen and (max-width: 769px) {
+        @include font(1.2em, 600);
+      }
+    }
+
+    > p {
+      color: var(--risk-text-fade);
+      max-width: fit-content;
+      @include font(1em, 700, "Abhaya Libre");
+
+      @media screen and (max-width: 769px) {
+        @include font(0.9em, 300, "Abhaya Libre");
+      }
+    }
+  }
+}
