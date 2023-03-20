@@ -22,15 +22,11 @@ export const useFormProcessor = (
   const [section, setSection] = React.useState(1);
 
   const groupedFields: { [key: string]: Record<string, any[]> }[] =
-    React.useMemo(
-      () => structredFormGroup(fields),
-
-      []
-    );
+    React.useMemo(() => structredFormGroup(fields), [fields]);
 
   const formSections: Array<any> = React.useMemo(
     () => Object.keys(groupedFields || []),
-    []
+    [groupedFields]
   );
 
   const getCurrentSection = (section: number): Array<unknown> => {
