@@ -1,11 +1,12 @@
-@mixin font($size, $weight: 400) {
+@mixin font($size, $weight: 400, $family: "Poppins") {
   font: {
     size: $size;
     weight: $weight;
+    family: $family;
   }
 }
 
-@mixin scrollbars($size: 3px, $background-color: var(--deep-black)) {
+@mixin scrollbars($size: 3px, $background-color: var(--risk-black)) {
   &::-webkit-scrollbar {
     width: $size;
     height: $size;
