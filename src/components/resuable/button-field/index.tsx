@@ -59,7 +59,7 @@ const ButtonField = React.forwardRef(
                 styles.button,
                 currentValue === option ? styles.picked : "",
                 options.length > 7 ? "mb-2" : "",
-                i > 0 ? "ms-2" : "",
+                "me-2",
               ])}
             >
               {option}
