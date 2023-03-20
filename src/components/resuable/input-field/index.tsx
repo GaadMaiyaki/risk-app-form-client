@@ -45,11 +45,11 @@ const InputField = React.forwardRef(
             onChange={formik.handleChange}
             aria-label={label}
             aria-describedby={`${name}-error`}
-            autoComplete="false"
-            autoCorrect="false"
+            autoComplete="off"
+            autoCorrect="off"
           />
 
-          {/*{!!tooltip && <Tooltip content={tooltip} id={name} />}*/}
+          {!!tooltip && <Tooltip content={tooltip} id={name} />}
         </FieldWrapper>
       </>
     );
