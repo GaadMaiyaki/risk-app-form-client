@@ -12,10 +12,11 @@ axiosInstance.interceptors.request.use(
   (
     config: InternalAxiosRequestConfig<any>
   ): InternalAxiosRequestConfig<any> => {
-    const token = LocalStorageService.get(REACT_APP_USER);
+    const token = LocalStorageService.get(REACT_APP_USER)?.jwt?.token;
 
     if (!!token) {
       config.headers.Authorization = `Bearer ${token}`;
+      config.headers["Accept-Profile"] = "api_dev";
     }
 
     return config;
