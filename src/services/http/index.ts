@@ -10,7 +10,8 @@ class HTTPService {
   };
   static get = async (path: string) => {
     try {
-      return await axiosInstance.get(path);
+      const res = await axiosInstance.get(path);
+      return res.data;
     } catch (err: any) {
       throw new Error(err.data ? err.data?.message : err);
     }
