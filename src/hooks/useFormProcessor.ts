@@ -24,10 +24,9 @@ export const useFormProcessor = (
   const groupedFields: { [key: string]: Record<string, any[]> }[] =
     React.useMemo(() => structredFormGroup(fields), [fields]);
 
-  const formSections: Array<any> = React.useMemo(
-    () => Object.keys(groupedFields || []),
-    [groupedFields]
-  );
+  console.log(groupedFields, "this is the grouped fields ma");
+
+  const formSections: Array<string> = Object.keys(groupedFields || []);
 
   const getCurrentSection = (section: number): Array<unknown> => {
     if (!sectionCache.get(section)) {
