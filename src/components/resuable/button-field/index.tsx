@@ -48,23 +48,25 @@ const ButtonField = React.forwardRef(
         </LabelWrapper>
 
         <FieldWrapper withJustify>
-          {options.map((option: string, i: number) => (
-            <button
-              type="button"
-              key={i}
-              ref={i === 0 ? ref : null}
-              onClick={() => handleClick(option)}
-              className={parseClassName([
-                "px-3 py-1",
-                styles.button,
-                currentValue === option ? styles.picked : "",
-                options.length > 7 ? "mb-2" : "",
-                "me-2",
-              ])}
-            >
-              {option}
-            </button>
-          ))}
+          {!!options &&
+            options?.length > 0 &&
+            options.map((option: string, i: number) => (
+              <button
+                type="button"
+                key={i}
+                ref={i === 0 ? ref : null}
+                onClick={() => handleClick(option)}
+                className={parseClassName([
+                  "px-3 py-1",
+                  styles.button,
+                  currentValue === option ? styles.picked : "",
+                  options.length > 7 ? "mb-2" : "",
+                  "me-2",
+                ])}
+              >
+                {option}
+              </button>
+            ))}
 
           {!!tooltip && <Tooltip content={tooltip} id={name} />}
         </FieldWrapper>
