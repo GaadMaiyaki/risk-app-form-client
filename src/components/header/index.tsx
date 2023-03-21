@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./index.module.scss";
 
 import { parseClassName } from "./../../utils";
+import GoBackSvg from "../../icons/svgs/back";
 
 const Header = () => {
   return (
@@ -18,8 +19,17 @@ const Header = () => {
         ])}
       >
         <div>
-          <span>Back to Home Page</span>
+          <button
+            aria-label="go back to home page"
+            title="go back to home page"
+            className={styles.btn}
+          >
+            <GoBackSvg />
+
+            <span className="ms-2">Back to Home Page</span>
+          </button>
         </div>
+
         <div className="text-center">
           <img
             src="/logo.png"
@@ -30,12 +40,7 @@ const Header = () => {
           />
         </div>
 
-        <div
-          className={parseClassName([
-            "text-center mt-4 md-lg-0 mt-xl-0 mt-xxl-0",
-            styles.text,
-          ])}
-        >
+        <div className={parseClassName(["text-end", styles.text])}>
           Client name
         </div>
       </section>
