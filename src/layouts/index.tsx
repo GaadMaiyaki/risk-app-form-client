@@ -17,10 +17,10 @@ const HeaderFooterLayout = () => {
           <FormHeader />
           <Outlet />
         </section>
+        <FormFooter />
       </main>
 
       <footer>
-        <FormFooter />
         <Footer />
       </footer>
     </>
