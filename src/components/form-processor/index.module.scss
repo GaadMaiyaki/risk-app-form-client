@@ -3,7 +3,6 @@
 .wrapper {
   background: var(--risk-bg-secondary-light);
   overflow-y: auto;
-  //max-height: 40vh;
   z-index: 1;
 
   @include scrollbars(5px);
