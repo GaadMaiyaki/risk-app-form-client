@@ -8,7 +8,17 @@ const year = new Date().getFullYear();
 
 const Footer = () => {
   return (
-    <section className={parseClassName([styles.wrapper, "text-center"])}>
+    <section
+      style={{ bottom: 0, left: 0 }}
+      className={parseClassName([
+        styles.wrapper,
+
+        "position-absolute",
+        "w-100",
+
+        "text-center",
+      ])}
+    >
       <div className="py-4">
         <aside>Pillar Risk Partners LLC</aside>
         <aside> @{year} by Pillar Risk</aside>
