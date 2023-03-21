@@ -7,10 +7,7 @@
 }
 
 .wrapper {
-  > button[data-shouldprevious="false"] {
-    @extend .svgProperty;
-  }
-
+  > button[data-shouldprevious="false"],
   > button[data-shouldnext="false"] {
     @extend .svgProperty;
   }
@@ -20,6 +17,10 @@
     background-color: transparent;
     transition: 0.3s ease-in-out;
     @include font(1em, 500);
+
+    @media screen and (max-width: 769px) {
+      @include font(0.85em, 500);
+    }
 
     &:hover {
       opacity: 0.9;
