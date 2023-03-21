@@ -66,6 +66,15 @@ export const extractDataValue = (fields: Array<any>) => {
   let obj: any = {};
 
   for (const field of fields) {
+    if (
+      field.type === "select" ||
+      field.type === "popform" ||
+      field.type === "multiselect" ||
+      field.type === "linear"
+    ) {
+      console.log(field.type, field.value, "this sis the field value man.");
+    }
+
     if (!!field?.children) {
       obj = { ...obj, ...extractDataValue(field.children) };
     } else {
