@@ -11,15 +11,23 @@
     flex: wrap;
     overflow-x: auto;
     white-space: nowrap;
-    @include font(0.97em, 400);
     @include scrollbars(0px);
 
     .bold {
-      @include font(1em, 600);
+      @include font(0.9em, 600);
+
+      @media screen and (max-width: 900px) {
+        @include font(0.85em, 600);
+      }
     }
 
     .light {
       color: var(--risk-black-light);
+      @include font(0.9em, 400);
+
+      @media screen and (max-width: 900px) {
+        @include font(0.85em, 400);
+      }
     }
   }
 }
