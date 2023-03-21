@@ -22,6 +22,8 @@ const FormPage = () => {
   const { isLoading, isError, data, error, refetch }: any =
     useGet("/client/order/form");
 
+  console.log(data, "this is the data man");
+
   //React.useEffect(() => {
   //  makeApicall()
   //    .then((data: any) => {
@@ -46,7 +48,7 @@ const FormPage = () => {
     );
   }
 
-  return <FormProvider data={data} />;
+  return <FormProvider data={data.form_fields} />;
 };
 
 export default FormPage;
