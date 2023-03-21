@@ -26,6 +26,7 @@ const SelectField = React.forwardRef(
     ref: any
   ) => {
     typeof options === "string" &&
+      !!options &&
       (options = options.replace(/[{}]/g, "").split(","));
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -53,7 +54,8 @@ const SelectField = React.forwardRef(
             onChange={handleChange}
           >
             <option value=""></option>
-            {options.length > 0 &&
+            {!!options &&
+              options?.length > 0 &&
               options.map((option: any) => (
                 <option key={option} value={option}>
                   {option}
