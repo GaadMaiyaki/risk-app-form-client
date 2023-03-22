@@ -3,5 +3,9 @@
     background-color: var(--risk-bg-secondary);
     padding-top: 7em !important;
     padding-bottom: 6.7em !important;
+
+    @media screen and (max-width: 769px) {
+      padding-top: 5em !important;
+    }
   }
 }
