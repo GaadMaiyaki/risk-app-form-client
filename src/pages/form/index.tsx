@@ -6,6 +6,10 @@ import { fields } from "../../data";
 
 import { useGet } from "../../services/queries";
 
+import { parseClassName } from "../../utils";
+
+import styles from "./index.module.scss";
+
 const makeApicall = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve(fields), 500);
@@ -34,15 +38,38 @@ const FormPage = () => {
   //}, []);
 
   if (isLoading) {
-    return <div className="text-center py-5">Please wait...</div>;
+    return (
+      <div
+        className={parseClassName([
+          styles.loading,
+          "d-flex flex-column align-items-center justify-content-center",
+        ])}
+      >
+        <div className="d-flex align-items-center mb-2">
+          <div className="spinner-grow spinner-grow-sm mb-2 text-success"></div>
+          <div className="spinner-grow spinner-grow-sm mb-2 text-success mx-2"></div>
+          <div className="spinner-grow spinner-grow-sm mb-2 text-success"></div>
+        </div>
+        <div>Please wait...</div>
+      </div>
+    );
   }
 
   if (isError) {
     return (
-      <div className="text-center text-danger py-5">
+      <div
+        className={parseClassName([
+          styles.error,
+          "d-flex flex-column align-items-center justify-content-center text-danger",
+        ])}
+      >
         <div>{error.message}</div>
-        <button className="btn btn-success mt-2" onClick={() => refetch()}>
-          retry
+        <button
+          className="btn btn-success mt-2"
+          title="try again"
+          onClick={() => refetch()}
+        >
+          Try again
         </button>
       </div>
     );
