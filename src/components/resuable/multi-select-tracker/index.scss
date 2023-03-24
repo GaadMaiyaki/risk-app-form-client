@@ -1,0 +1,41 @@
+@import "../../../../styles/_mixins.scss";
+
+.react-select-container {
+  border: 0 !important;
+
+  &:focus {
+    border: rgba(0, 153, 34, 1) !important;
+  }
+
+  > {
+    border: 0;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.label {
+  color: rgba(24, 24, 24, 1);
+  @include font(0.85em, 600);
+}
+
+.field {
+  .css-1s2u09g-control {
+    border: 0 !important;
+  }
+  border: none !important;
+  outline: 0 !important;
+  width: 100%;
+  background-color: var(--white);
+  @include font(0.9em, 600);
+
+  > input {
+    padding: 0;
+  }
+
+  &:focus {
+    outline: 0;
+    border: 1px solid rgba(0, 153, 34, 1) !important;
+  }
+}
