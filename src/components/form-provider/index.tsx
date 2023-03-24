@@ -58,7 +58,7 @@ const FormProvider = ({ data }: IFormProvider) => {
 
   return (
     <>
-      <Tabs data={groupedFields} section={section} />
+      {/*<Tabs data={groupedFields} section={section} />*/}
       <Formik
         initialValues={extractDataValue(data)}
         //validationSchema={validatorProcessor(currentSection)}
