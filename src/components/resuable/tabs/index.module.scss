@@ -11,7 +11,7 @@
     flex: wrap;
     overflow-x: auto;
     white-space: nowrap;
-    @include scrollbars(0px);
+    @include scrollbars(0px, 0px);
 
     .bold {
       @include font(0.9em, 600);
