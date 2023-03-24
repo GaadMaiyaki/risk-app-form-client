@@ -11,7 +11,7 @@ body {
   background-color: var(--risk-primary-dark);
   min-height: 100vh;
 
-  @include scrollbars(5px);
+  @include scrollbars(6px, 1px);
 }
 
 input,
