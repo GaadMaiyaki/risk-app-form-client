@@ -6,19 +6,39 @@
   }
 }
 
-@mixin scrollbars($size: 3px, $background-color: var(--risk-black)) {
+@mixin scrollbars(
+  $width: 3px,
+  $height: 0px,
+  $background-color: var(--risk-black)
+) {
+  &::-webkit-scrollbar,
   &::-webkit-scrollbar {
-    width: $size;
-    height: $size;
-    border-radius: 5px;
+    width: $width;
+    height: $height;
   }
+
+  &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-thumb {
-    background: $background-color;
-    border-radius: 5px;
+    background-color: var(--risk-primary-dark);
+    outline: 1px solid var(--risk-primary-dark);
   }
+
+  &::-webkit-scrollbar-track,
   &::-webkit-scrollbar-track {
-    background: #e2e2e2;
-    border-radius: 5px;
+    box-shadow: inset 0 0 6px var(--risk-primary-light);
   }
-  scrollbar-color: #e2e2e2 $background-color;
+  //&::-webkit-scrollbar {
+  //  width: $size;
+  //  height: $size;
+  //  border-radius: 5px;
+  //}
+  //&::-webkit-scrollbar-thumb {
+  //  background: $background-color;
+  //  border-radius: 5px;
+  //}
+  //&::-webkit-scrollbar-track {
+  //  background: #e2e2e2;
+  //  border-radius: 5px;
+  //}
+  //scrollbar-color: #e2e2e2 $background-color;
 }
