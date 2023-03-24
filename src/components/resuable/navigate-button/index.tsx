@@ -47,18 +47,16 @@ const NavigateButton = ({
             ? `Go to ${previousSectionName} section`
             : "Form sections begin here"
         }
-        title={
-          !!previousSectionName
-            ? `Go to ${previousSectionName} section`
-            : "Form sections begin here"
-        }
+        //title={
+        //  !!previousSectionName
+        //    ? `Go to ${previousSectionName} section`
+        //    : "Form sections begin here"
+        //}
         onClick={handlePrevious}
       >
         <BackwardSvg />
         {shouldPrevious && (
-          <span className="mx-3">
-            <em>[{previousSectionName}]</em>
-          </span>
+          <span className="mx-3">{/*<em>[{previousSectionName}]</em>*/}</span>
         )}
 
         <aside className="ms-2">Previous</aside>
@@ -73,11 +71,11 @@ const NavigateButton = ({
             ? `Go to ${nextSectionName} section`
             : "Form sections end here"
         }
-        title={
-          !!nextSectionName
-            ? `Go to ${nextSectionName} section`
-            : "Form sections end here"
-        }
+        //title={
+        //  !!nextSectionName
+        //    ? `Go to ${nextSectionName} section`
+        //    : "Form sections end here"
+        //}
         onClick={handleNext}
         className="d-flex align-items-center ms-2 mt-2 mt-md-0 mt-lg-0 mt-xl-0 mt-xxl-0"
         data-shouldnext={shouldNext}
@@ -85,9 +83,7 @@ const NavigateButton = ({
         <aside className="me-3">Next</aside>
 
         {shouldNext && (
-          <span className="me-3">
-            <em>[{nextSectionName}]</em>
-          </span>
+          <span className="me-3">{/*<em>[{nextSectionName}]</em>*/}</span>
         )}
         <ForwardSvg />
       </button>
