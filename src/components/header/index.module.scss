@@ -6,6 +6,9 @@
   top: 0;
   @include font(1.2em, 400, "Abhaya Libre");
 
+  @media screen and (max-width: 769px) {
+    @include font(0.9em, 400, "Abhaya Libre");
+  }
   .innerWrapper {
     background-color: var(--risk-primary-dark);
     color: var(--risk-white);
@@ -13,6 +16,15 @@
 
     > div {
       flex: 1;
+    }
+
+    > div {
+      > img {
+        @media screen and (max-width: 769px) {
+          width: 50px !important;
+          height: 50px !important;
+        }
+      }
     }
 
     .btn {
