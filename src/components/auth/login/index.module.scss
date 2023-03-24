@@ -1,6 +1,8 @@
 @import "../../../styles/_mixins.scss";
 
 .wrapper {
+  padding: 2.1em 0;
+
   > div > span {
     @include font(0.85em, 600);
   }
