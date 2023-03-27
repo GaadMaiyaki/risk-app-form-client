@@ -31,14 +31,18 @@ axiosInstance.interceptors.response.use(
     return Promise.resolve(res);
   },
   async (error) => {
-    const errConfig = error?.config;
+    const errConfig = error.config;
 
     if (!error.response) {
       return Promise.reject(error);
     }
 
     if (errConfig?.url !== "/login") {
-      if (error.response.status === 401 || error.response.status === 403) {
+      if (
+        error.response.status === 401 ||
+        error.response.status === 403 ||
+        error.response.status === 404
+      ) {
         LocalStorageService.remove(REACT_APP_USER);
 
         window.location.href = "/";
