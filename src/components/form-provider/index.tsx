@@ -14,6 +14,7 @@ import FormProccessor from "../form-processor";
 import { extractDataValue, handleError, validatorProcessor } from "../../utils";
 import FormHeader from "../form-header";
 import FormFooter from "./../form-footer";
+import AutoSubmit from "../auto-submit";
 
 interface IFormProvider {
   data: Array<any>;
@@ -58,49 +59,53 @@ const FormProvider = ({ data }: IFormProvider) => {
 
   return (
     <>
-      {/*<Tabs data={groupedFields} section={section} />*/}
+      <Tabs data={groupedFields} section={section} />
       <Formik
         initialValues={extractDataValue(data)}
         //validationSchema={validatorProcessor(currentSection)}
         validateOnMount
         onSubmit={(v, f: any) => {
-          console.log(v, "this is value", f, "this is error");
+          console.log(v, "this is values", f, "this is error");
         }}
       >
         {(formik: FormikProps<any>) => {
           return (
-            <Form>
-              <FormProccessor
-                fields={currentSection}
-                formik={formik}
-                refs={refs}
-              />
+            <>
+              <AutoSubmit formik={formik} />
 
-              <aside className="mt-5 text-center">
-                <NavigateButton
-                  handleNext={handleNext(formik)}
-                  handlePrevious={handlePrevious(formik)}
-                  type="submit"
-                  shouldNext={shouldNext}
-                  shouldPrevious={shouldPrevious}
-                  previousSectionName={getPreviousSectionName()}
-                  nextSectionName={getNextSectionName()}
+              <Form>
+                <FormProccessor
+                  fields={currentSection}
+                  formik={formik}
+                  refs={refs}
                 />
-              </aside>
 
-              <aside className="text-center">
-                {/*{section === formSections.length && (
-                  <Button
+                <aside className="mt-5 text-center">
+                  <NavigateButton
+                    handleNext={handleNext(formik)}
+                    handlePrevious={handlePrevious(formik)}
                     type="submit"
-                    title="Submit Form"
-                    color="secondary"
-                    size="lg"
-                    label="Submit Form"
-                    classes="w-100 mb-3 py-2"
+                    shouldNext={shouldNext}
+                    shouldPrevious={shouldPrevious}
+                    previousSectionName={getPreviousSectionName()}
+                    nextSectionName={getNextSectionName()}
                   />
-                )}*/}
-              </aside>
-            </Form>
+                </aside>
+
+                <aside className="text-center">
+                  {section === formSections.length && (
+                    <Button
+                      type="submit"
+                      title="Submit Form"
+                      color="secondary"
+                      size="lg"
+                      label="Submit Form"
+                      classes="w-100 my-4 py-2"
+                    />
+                  )}
+                </aside>
+              </Form>
+            </>
           );
         }}
       </Formik>
