@@ -15,9 +15,9 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import reportWebVitals from "./reportWebVitals";
 
 const queryClient = new QueryClient({
-  //defaultOptions: {
-  //  queries: { refetchOnWindowFocus: false, refetchOnReconnect: true },
-  //},
+  defaultOptions: {
+    queries: { refetchOnWindowFocus: false },
+  },
 });
 
 const root = ReactDOM.createRoot(
