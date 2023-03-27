@@ -24,8 +24,6 @@ export const useFormProcessor = (
   const groupedFields: { [key: string]: Record<string, any[]> }[] =
     React.useMemo(() => structredFormGroup(fields), [fields]);
 
-  console.log(groupedFields, "this is the grouped fields ma");
-
   const formSections: Array<string> = Object.keys(groupedFields || []);
 
   const getCurrentSection = (section: number): Array<unknown> => {
@@ -41,6 +39,7 @@ export const useFormProcessor = (
 
   const getPreviousSectionName = (): string | undefined => {
     if (section === 1) return undefined;
+
     return flatData(
       Object.values(groupedFields[section > 2 ? section - 1 : 1] || [])
     )?.[0]?.section_name;
@@ -77,7 +76,7 @@ export const useFormProcessor = (
     {
       currentSection: getCurrentSection(section),
       section,
-      formSections: Object.keys(groupedFields || []),
+      formSections,
       shouldNext,
       shouldPrevious,
       groupedFields,
