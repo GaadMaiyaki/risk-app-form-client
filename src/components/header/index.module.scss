@@ -7,7 +7,7 @@
   @include font(1.2em, 400, "Abhaya Libre");
 
   @media screen and (max-width: 769px) {
-    @include font(0.9em, 400, "Abhaya Libre");
+    @include font(0.98em, 400, "Abhaya Libre");
   }
   .innerWrapper {
     background-color: var(--risk-primary-dark);
