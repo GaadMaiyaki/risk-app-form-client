@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./index.module.scss";
 
-import { parseClassName } from "./../../utils";
+import { getClientName, parseClassName } from "./../../utils";
 import GoBackSvg from "../../icons/svgs/back";
 
 const Header = () => {
@@ -24,7 +24,7 @@ const Header = () => {
             title="go back to home page"
             className={parseClassName([
               styles.btn,
-              " d-flex align-items-center",
+              "d-flex align-items-center",
             ])}
           >
             <GoBackSvg />
@@ -46,7 +46,7 @@ const Header = () => {
         </div>
 
         <div className={parseClassName(["text-end", styles.text])}>
-          Client name
+          {getClientName() ?? "Welcome"}
         </div>
       </section>
     </section>
