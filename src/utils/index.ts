@@ -3,6 +3,7 @@ import React from "react";
 import { FormikProps } from "formik";
 
 import * as Yup from "yup";
+import LocalStorageService from "../services/local-storage";
 
 //import { parsePhoneNumberFromString } from "libphonenumber-js";
 
@@ -286,4 +287,11 @@ export const handleError = (
       });
       refs[name].current?.focus();
     });
+};
+
+export const getClientName = () => {
+  return (
+    LocalStorageService.get(`${process.env.REACT_APP_USER}`)?.client_name ??
+    undefined
+  );
 };
