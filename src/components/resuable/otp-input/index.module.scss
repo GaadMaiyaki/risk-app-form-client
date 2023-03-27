@@ -9,7 +9,7 @@
 
 .otpInput {
   width: 3.8rem !important;
-  height: 4.2rem;
+  height: 4.1rem;
   color: var(--risk-primary);
   //line-height: 22px;
   border: 1px solid var(--risk-primary);
@@ -21,8 +21,8 @@
   @include font(1.4em, 400);
 
   @media screen and (max-width: 769px) {
-    width: 2.5rem !important;
-    height: 3rem;
+    width: 2.8rem !important;
+    height: 3.2rem;
     margin: 0.2rem;
     @include font(1.1em, 400);
   }
