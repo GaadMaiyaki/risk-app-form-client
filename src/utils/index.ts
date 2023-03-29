@@ -61,21 +61,11 @@ export const flatData = (data: Array<any>) => {
 };
 
 export const extractDataValue = (fields: Array<any>) => {
-  console.log(fields, "these are the fields");
   if (fields?.length <= 0) return null;
 
   let obj: any = {};
 
   for (const field of fields) {
-    if (
-      field.type === "select" ||
-      field.type === "popform" ||
-      field.type === "multiselect" ||
-      field.type === "linear"
-    ) {
-      console.log(field.type, field.value, "this sis the field value man.");
-    }
-
     if (!!field?.children) {
       obj = { ...obj, ...extractDataValue(field.children) };
     } else {
