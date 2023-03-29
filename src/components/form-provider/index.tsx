@@ -11,10 +11,7 @@ import NavigateButton from "../resuable/navigate-button";
 
 import FormProccessor from "../form-processor";
 
-import { extractDataValue, handleError, validatorProcessor } from "../../utils";
-import FormHeader from "../form-header";
-import FormFooter from "./../form-footer";
-import AutoSubmit from "../auto-submit";
+import { extractDataValue } from "../../utils";
 
 interface IFormProvider {
   data: Array<any>;
@@ -40,21 +37,11 @@ const FormProvider = ({ data }: IFormProvider) => {
   } = useRefs(data);
 
   const handleNext = (formik: FormikProps<any>) => () => {
-    //!formik.isValid && handleError(formik.errors, refs);
-
-    //formik.isValid&&
     handleSectionChange("next");
-
-    //formik.setSubmitting(false);
   };
 
   const handlePrevious = (formik: FormikProps<any>) => () => {
-    //formik.isValid&&
     handleSectionChange("previous");
-
-    //!formik.isValid && handleError(formik.errors, refs);
-
-    //formik.setSubmitting(false);
   };
 
   return (
@@ -62,17 +49,12 @@ const FormProvider = ({ data }: IFormProvider) => {
       <Tabs data={groupedFields} section={section} />
       <Formik
         initialValues={extractDataValue(data)}
-        //validationSchema={validatorProcessor(currentSection)}
         validateOnMount
-        onSubmit={(v, f: any) => {
-          console.log(v, "this is values", f, "this is error");
-        }}
+        onSubmit={(v, f: any) => {}}
       >
         {(formik: FormikProps<any>) => {
           return (
             <>
-              <AutoSubmit formik={formik} />
-
               <Form>
                 <FormProccessor
                   fields={currentSection}
