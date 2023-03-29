@@ -57,7 +57,7 @@ const NavigateButton = ({
         <BackwardSvg />
         {shouldPrevious && (
           <span className="mx-3">
-            {/*<em>{previousSectionName}</em>*/}
+            <em>{previousSectionName}</em>
           </span>
         )}
 
@@ -86,7 +86,7 @@ const NavigateButton = ({
 
         {shouldNext && (
           <span className="me-3">
-            {/*<em>{nextSectionName}</em>*/}
+            <em>{nextSectionName}</em>
           </span>
         )}
         <ForwardSvg />
