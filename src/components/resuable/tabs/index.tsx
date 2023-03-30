@@ -22,10 +22,12 @@ const Tabs = ({ data, section }: ITabs) => {
       //  behavior: "smooth",
       //});
 
-      ref.current.scrollIntoView({
-        behavior: "instant",
-        block: "center",
-        inline: "start",
+      window.requestAnimationFrame(() => {
+        ref.current.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "start",
+        });
       });
 
       //window.requestAnimationFrame(() => {
