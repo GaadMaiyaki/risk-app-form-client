@@ -2,6 +2,8 @@ import React from "react";
 
 import FormProvider from "../../components/form-provider";
 
+import { withProtection } from "../../components/hoc";
+
 import { fields } from "../../data";
 
 import { useGet } from "../../services/queries";
@@ -78,4 +80,4 @@ const FormPage = () => {
   return <FormProvider data={data.form_fields} />;
 };
 
-export default FormPage;
+export default withProtection(FormPage);
