@@ -4,7 +4,9 @@ import Auth from "../components/auth/login";
 
 import styles from "./index.module.scss";
 
-import { parseClassName } from "./../utils/index";
+import { parseClassName } from "./../utils";
+
+import { withProtectionOnce } from "../components/hoc";
 
 const HomePage = () => {
   return (
@@ -21,7 +23,7 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default withProtectionOnce(HomePage);
 
 //const { v4: uuidv4 } = require("uuid");
 
