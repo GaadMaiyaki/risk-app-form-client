@@ -6,7 +6,7 @@ import styles from "./index.module.scss";
 
 import { parseClassName } from "./../utils";
 
-import { withProtectionOnce } from "../hoc";
+import { withProtectionOnce } from "../components/hoc";
 
 const HomePage = () => {
   return (
