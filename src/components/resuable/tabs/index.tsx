@@ -14,21 +14,27 @@ const Tabs = ({ data, section }: ITabs) => {
 
   React.useEffect(() => {
     if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      const offset = window.pageYOffset + rect.top;
+      //const rect = ref.current.getBoundingClientRect();
+      //const offset = window.pageYOffset + rect.top;
 
-      window.scrollTo({
-        top: offset,
-        behavior: "smooth",
+      //window.scrollTo({
+      //  top: offset,
+      //  behavior: "smooth",
+      //});
+
+      ref.current.scrollIntoView({
+        behavior: "instant",
+        block: "center",
+        inline: "start",
       });
 
-      window.requestAnimationFrame(() => {
-        ref.current.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "start",
-        });
-      });
+      //window.requestAnimationFrame(() => {
+      //  ref.current.scrollIntoView({
+      //    behavior: "smooth",
+      //    block: "center",
+      //    inline: "start",
+      //  });
+      //});
     }
   }, [section]);
 
