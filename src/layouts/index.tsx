@@ -12,13 +12,13 @@ const HeaderFooterLayout = () => {
         <Header />
       </header>
 
-      <main className="bg-c py-4 mx-0 mx-lg-5 mx-xl-5 mx-xxl-5">
+      <main className="bg-c mx-0 mx-lg-5 mx-xl-5 mx-xxl-5">
         <section className="container">
           <FormHeader />
           <Outlet />
         </section>
-        <FormFooter />
       </main>
+      <FormFooter />
 
       <footer>
         <Footer />
