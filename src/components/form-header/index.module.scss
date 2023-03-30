@@ -7,7 +7,7 @@
       @include font(1.7em, 600, "Abhaya Libre");
 
       @media screen and (max-width: 769px) {
-        @include font(1.4em, 600, "Abhaya Libre");
+        @include font(1.5em, 600, "Abhaya Libre");
       }
     }
 
@@ -17,7 +17,7 @@
       @include font(1em, 700, "Abhaya Libre");
 
       @media screen and (max-width: 769px) {
-        @include font(0.92em, 300, "Abhaya Libre");
+        @include font(0.95em, 300, "Abhaya Libre");
       }
     }
   }
