@@ -53,7 +53,7 @@ const fieldComponentPicker = (
       );
     }
     default:
-      console.log(type, "hre man");
+      console.log(type, "unhandled type.");
     //throw new Error("invalid field type");
   }
 };
