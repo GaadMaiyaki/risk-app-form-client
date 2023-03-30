@@ -5,7 +5,6 @@ import { FormikProps } from "formik";
 import { debounce } from "../../utils";
 
 const k = (v: any) => {
-  console.log("submitting here man and there man");
   return Promise.resolve(() => 500);
 };
 
