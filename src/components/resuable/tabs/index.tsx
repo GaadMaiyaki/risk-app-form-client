@@ -4,6 +4,8 @@ import styles from "./index.module.scss";
 
 import { flatData, parseClassName } from "./../../../utils";
 
+//import { useWindowWidth } from "../../../hooks/useWindowWidth";
+
 interface ITabs {
   section: number;
   data: Array<any>;
@@ -11,6 +13,8 @@ interface ITabs {
 
 const Tabs = ({ data, section }: ITabs) => {
   const ref = React.useRef<any>(null);
+
+  //const width = useWindowWidth();
 
   React.useEffect(() => {
     if (ref.current) {
@@ -24,7 +28,7 @@ const Tabs = ({ data, section }: ITabs) => {
 
       window.requestAnimationFrame(() => {
         ref.current.scrollIntoView({
-          behavior: "smooth",
+          behavior: "auto",
           block: "center",
           inline: "start",
         });
