@@ -2,11 +2,7 @@ import React from "react";
 
 import { useRoutes } from "react-router-dom";
 
-import Protected from "../components/auth/protected";
-import ProtectedOnce from "../components/auth/protected-once";
 import HeaderFooterLayout from "./../layouts";
-
-import LocalStorageService from "../services/local-storage";
 
 const HomePage = React.lazy(() => import("../pages"));
 const FormPage = React.lazy(() => import("./../pages/form"));
@@ -21,26 +17,13 @@ const useCustomRoutes = () => {
         {
           path: "/",
           element: (
-            <ProtectedOnce
-              isAuthenticated={
-                !!LocalStorageService.get(`${process.env.REACT_APP_USER}`)
-              }
-            >
-              <HomePage />
-            </ProtectedOnce>
+           
+            <HomePage />
           ),
         },
         {
           path: "form",
-          element: (
-            <Protected
-              isAuthenticated={
-                !!LocalStorageService.get(`${process.env.REACT_APP_USER}`)
-              }
-            >
-              <FormPage />
-            </Protected>
-          ),
+          element: <FormPage />,
         },
       ],
     },
