@@ -19,14 +19,12 @@ interface IFormProcessor {
 }
 
 const FormProcessor = ({ fields, formik, refs }: IFormProcessor) => {
-  console.log(fields, "here man many");
 
   return (
     <section
       className={parseClassName(["container-fluid pt-4 pb-2", styles.wrapper])}
     >
       {Array.from({ length: fields.length }).map((_, i: number) => {
-        console.log(fields[i], i, "here man");
 
         return (
           <div className="row mb-4" key={i}>
