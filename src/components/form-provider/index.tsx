@@ -63,9 +63,7 @@ const FormProvider = ({ data }: IFormProvider) => {
         initialValues={extractDataValue(data)}
         //validationSchema={validatorProcessor(currentSection)}
         validateOnMount
-        onSubmit={(v, f: any) => {
-          console.log(v, "this is values", f, "this is error");
-        }}
+        onSubmit={(v, f: any) => {}}
       >
         {(formik: FormikProps<any>) => {
           return (
