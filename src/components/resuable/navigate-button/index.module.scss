@@ -19,7 +19,7 @@
     @include font(1em, 500);
 
     @media screen and (max-width: 769px) {
-      @include font(0.85em, 500);
+      @include font(0.95em, 500);
     }
 
     &:hover {

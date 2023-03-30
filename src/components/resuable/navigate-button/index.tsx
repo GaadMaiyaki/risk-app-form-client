@@ -79,7 +79,7 @@ const NavigateButton = ({
             : "Form sections end here"
         }
         onClick={handleNext}
-        className="d-flex align-items-center ms-2 mt-2 mt-md-0 mt-lg-0 mt-xl-0 mt-xxl-0"
+        className="d-flex align-items-center ms-2 mt-4 mt-md-0 mt-lg-0 mt-xl-0 mt-xxl-0"
         data-shouldnext={shouldNext}
       >
         <aside className="me-3">Next</aside>
