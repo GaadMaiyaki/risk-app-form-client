@@ -4,12 +4,12 @@ import styles from "./index.module.scss";
 
 import { parseClassName } from "./../../utils";
 
-import { withClientName } from "./../hoc";
+import { withClientName } from "../../hoc";
 
 import GoBackSvg from "../../icons/svgs/back";
 
 interface IHeaderProps {
-  clientName?: "peter" | "Welcome";
+  clientName?: string;
 }
 
 const Header = ({ clientName }: IHeaderProps) => {
@@ -60,4 +60,4 @@ const Header = ({ clientName }: IHeaderProps) => {
   );
 };
 
-export default withClientName(Header);
+export default withClientName<IHeaderProps>(Header);
