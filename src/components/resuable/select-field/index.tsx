@@ -52,6 +52,7 @@ const SelectField = React.forwardRef(
             ])}
             ref={ref}
             onChange={handleChange}
+            value={formik.values[name]}
           >
             <option value=""></option>
             {!!options &&
