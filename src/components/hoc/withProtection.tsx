@@ -3,9 +3,11 @@ import { Navigate } from "react-router-dom";
 import LocalStorageService from "../../services/local-storage";
 
 const withProtection = <T extends {}>(Component: React.FC<T>) => {
-  const isAuth = LocalStorageService.get(process.env.REACT_APP_USER as string);
-
   return (props: T) => {
+    const isAuth = LocalStorageService.get(
+      process.env.REACT_APP_USER as string
+    );
+
     if (!isAuth) return <Navigate to="/" replace />;
 
     const ModifiedComponent = Component;
