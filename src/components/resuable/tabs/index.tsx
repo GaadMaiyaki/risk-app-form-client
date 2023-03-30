@@ -4,8 +4,6 @@ import styles from "./index.module.scss";
 
 import { flatData, parseClassName } from "./../../../utils";
 
-import { useWindowWidth } from "../../../hooks/useWindowWidth";
-
 interface ITabs {
   section: number;
   data: Array<any>;
@@ -17,7 +15,7 @@ const Tabs = ({ data, section }: ITabs) => {
   React.useEffect(() => {
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
-      const offset = window.pageYOffset + rect.top - window.outerHeight;
+      const offset = window.pageYOffset + rect.top;
 
       window.scrollTo({
         top: offset,
