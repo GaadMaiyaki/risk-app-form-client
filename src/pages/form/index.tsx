@@ -2,7 +2,7 @@ import React from "react";
 
 import FormProvider from "../../components/form-provider";
 
-import { withProtection } from "../../components/hoc";
+import { withProtection } from "../../hoc";
 
 import { fields } from "../../data";
 
