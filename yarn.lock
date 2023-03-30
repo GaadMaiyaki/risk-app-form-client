@@ -1218,6 +1218,14 @@
   resolved "https://registry.yarnpkg.com/@gaadmaiyaki/field-checker/-/field-checker-1.2.0.tgz#b8be507d65d027cbf72fe7e5d3b2d384bbb32f08"
   integrity sha512-8djsFgaYEaxaDNi2LqIh5ckC97sTqLRzlTHHLTt6clY0v3wJG3EXOAF2+6IAvllCEeiIULkbu/GiRpOwwPUVfg==
 
+"@gaadmaiyaki/simple-react-package@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@gaadmaiyaki/simple-react-package/-/simple-react-package-1.0.8.tgz#3c456f852f309c7a4ca0953986492be7defcc346"
+  integrity sha512-av97mXUmA+h4XFBU9bFa18jpw+4d/w3bAy5WCQboMGiOBIs4UH2WA8T0FHheC1TvXVX4GmY83SHPLJgmoqc07g==
+  dependencies:
+    react "^18.2.0"
+    react-dom "^18.2.0"
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
