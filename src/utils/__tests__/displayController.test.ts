@@ -37,8 +37,6 @@ describe("Display Controller", () => {
 
     const result = displayController(deps, values);
 
-    console.log(result, "here man");
-
     expect(result.display_dep).toBe(false);
   });
 
