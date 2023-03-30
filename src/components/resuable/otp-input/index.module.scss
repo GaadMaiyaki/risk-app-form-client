@@ -11,20 +11,18 @@
   width: 3.8rem !important;
   height: 4.1rem;
   color: var(--risk-primary);
-  //line-height: 22px;
   border: 1px solid var(--risk-primary);
   border-radius: $border-radius-md;
   outline: none;
   margin: 0.5rem;
-  background-color: transparent;
   transition: border 0.3s;
-  @include font(1.4em, 400);
+  @include font(2.2em, 800);
 
   @media screen and (max-width: 769px) {
     width: 2.8rem !important;
     height: 3.2rem;
     margin: 0.2rem;
-    @include font(1.1em, 400);
+    @include font(2em, 400);
   }
 
   &:focus {
