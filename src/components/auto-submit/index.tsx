@@ -26,13 +26,13 @@ const AutoSubmit = ({
 }) => {
   const d = debounce<{ [key: string]: any }>(k, 3000);
 
-  const handleAutoSubmit = React.useCallback((arg: any) => d(arg), []);
+  const handleAutoSubmit = React.useCallback((arg: any) => d(arg), [d]);
 
   React.useEffect(() => {
     if (dirty) {
       handleAutoSubmit(values);
     }
-  }, [values]);
+  }, [values, dirty, handleAutoSubmit]);
 
   return null;
 };
