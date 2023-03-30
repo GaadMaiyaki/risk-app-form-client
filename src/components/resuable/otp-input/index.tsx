@@ -23,7 +23,8 @@ const OtpInput = ({ value, setFieldValue, numInputs, name }: IOtpInput) => {
         inputStyle={styles.otpInput}
         numInputs={numInputs}
         separator={<span> </span>}
-        isInputNum={true}
+        isInputSecure
+        isInputNum
       />
 
       <ErrorMessage component="div" className={styles.error} name={name} />
