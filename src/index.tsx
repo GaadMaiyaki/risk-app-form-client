@@ -13,6 +13,7 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import reportWebVitals from "./reportWebVitals";
+import InitializeSpinner from "./components/spinners/init";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,7 +27,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <React.Suspense fallback={<div>booting up...</div>}>
+    <React.Suspense fallback={<InitializeSpinner />}>
       <Router>
         <QueryClientProvider client={queryClient}>
           <App />
