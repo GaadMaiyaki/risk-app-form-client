@@ -11,7 +11,10 @@ import NavigateButton from "../resuable/navigate-button";
 
 import FormProccessor from "../form-processor";
 
-import { extractDataValue, handleError, validatorProcessor } from "../../utils";
+import {
+  extractDataValue,
+  //handleError,validatorProcessor
+} from "../../utils";
 
 import AutoSubmit from "../auto-submit";
 
