@@ -19,17 +19,20 @@ const Tabs = ({ data, section }: ITabs) => {
     if (!ref.current) return;
 
     if (width < 769) {
-      ref.current.scrollIntoView({
-        behavior: "instant",
-        block: "center",
-        inline: "start",
+      window.requestAnimationFrame(() => {
+        ref.current.scrollIntoView({
+          behavior: "instant",
+          block: "center",
+          inline: "start",
+        });
       });
     } else {
-      alert("invoking 2");
-      ref.current.scrollIntoView({
-        behavior: "auto",
-        block: "center",
-        inline: "start",
+      window.requestAnimationFrame(() => {
+        ref.current.scrollIntoView({
+          behavior: "auto",
+          block: "center",
+          inline: "start",
+        });
       });
     }
   }, [section]);
