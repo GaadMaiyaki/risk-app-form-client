@@ -4,7 +4,7 @@ import styles from "./index.module.scss";
 
 import { parseClassName } from "./../../utils";
 
-import { withClientName } from "../../hoc";
+import { withClientName } from "../hoc";
 
 import GoBackSvg from "../../icons/svgs/back";
 
