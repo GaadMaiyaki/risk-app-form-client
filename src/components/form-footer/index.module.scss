@@ -2,11 +2,7 @@
 
 .wrapper {
   background-color: var(--risk-primary-dark);
-
-  @include font(0.9em, 700, "Abhaya Libre");
+  padding: 0.5em 0 9em 0 !important;
   color: var(--risk-secondary);
-
-  //padding: 0 0 7em 0;
-
-  //margin: 3em 0;
+  @include font(0.9em, 700, "Abhaya Libre");
 }
