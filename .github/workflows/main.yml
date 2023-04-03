@@ -28,4 +28,4 @@ jobs:
        
 
     - name: Deploy to S3
-      run: aws s3 sync ./build s3://risk-client-form --delete
+      run: aws s3 sync ./build s3://risk-form --delete
