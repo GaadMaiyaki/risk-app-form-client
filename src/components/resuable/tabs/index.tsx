@@ -35,7 +35,7 @@ const Tabs = ({ data, section }: ITabs) => {
         });
       });
     }
-  }, [section]);
+  }, [section, width]);
 
   return (
     <section
