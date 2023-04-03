@@ -33,4 +33,4 @@ jobs:
           aws-region: us-west-3
 
       - name: Deploy to S3 bucket
-        run: aws s3 sync ./dist/ s3://risk-client-form --delete
+        run: aws s3 sync ./build/ s3://risk-client-form --delete
