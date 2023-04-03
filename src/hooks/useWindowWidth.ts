@@ -7,7 +7,7 @@ export const useWindowWidth = () => {
 
   React.useEffect(() => {
     window.addEventListener("resize", handleWidth, { once: true });
-  }, [width);
+  }, [width]);
 
   return width;
 };
