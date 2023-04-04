@@ -8,7 +8,7 @@ const withProtectionOnce = <T extends {}>(Component: React.FC<T>) => {
 //       process.env.REACT_APP_USER as string
 //     );
 
-<!--     if (isAuth) return <Navigate to="/form" replace />; -->
+// if (isAuth) return <Navigate to="/form" replace />;
 
     const ModifiedComponent = Component;
 
